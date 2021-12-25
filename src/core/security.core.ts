@@ -6,7 +6,7 @@ export class Security {
     return CryptoJS.AES.encrypt(JSON.stringify(body), ENCRYPTION_KEY).toString();
   };
 
-  public static descryption = (body: any) => {
+  public static decryption = (body: any) => {
     try {
       const bytes = CryptoJS.AES.decrypt(body, ENCRYPTION_KEY);
       return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));

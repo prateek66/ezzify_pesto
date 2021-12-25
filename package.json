@@ -16,6 +16,7 @@
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
     "express-useragent": "^1.0.15",
+    "getmac": "^5.20.0",
     "helmet": "^4.6.0",
     "moment": "^2.29.1",
     "ts-node-dev": "^1.1.8"
@@ -45,6 +46,7 @@
     "cors": "express middleware to enable CORS",
     "crypto-js": "used in encryption and decryption of headers & inputs",
     "express-useragent": "user-agent middleware exposing user-agent details to your application and views",
+    "getmac": "get the MAC address of the current machine you are on",
     "helmet": "helps you secure your express apps by setting various HTTP headers",
     "moment": "required for date manipulations",
     "ts-node-dev": "development tool for nodejs project",

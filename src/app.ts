@@ -4,7 +4,8 @@ import helmet from "helmet";
 import useragent from "express-useragent";
 
 import Controller from "./interfaces/controller.interface";
-import { PATH } from "./config";
+import { ENVIRONMENT, PATH } from "./config";
+import { ApiError, InternalError, NotFoundError } from "./core/apiError.core";
 
 class App {
   public app: express.Application;
@@ -48,7 +49,23 @@ class App {
   /**
    * A generic function to handle errors at global level
    */
-  private _initalizeErrorHandling = () => {};
+  private _initalizeErrorHandling = () => {
+    // catch 404 and forward to error handler
+    this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+      return ApiError.handle(new NotFoundError(), res);
+    });
+
+    this.app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+      if (err instanceof ApiError) {
+        return ApiError.handle(err, res);
+      } else {
+        if (ENVIRONMENT === "DEV") {
+          return res.status(500).send(err.message);
+        }
+        return ApiError.handle(new InternalError(), res);
+      }
+    });
+  };
 
   /**
    * Starting the server

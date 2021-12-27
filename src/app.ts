@@ -30,8 +30,10 @@ class App {
     const { MONGO_CONNECTION_STRING, MONGO_PASSWORD } = process.env;
     // @ts-ignore
     const db = MONGO_CONNECTION_STRING?.replace("<PASSWORD>", MONGO_PASSWORD);
-    // @ts-ignore
-    mongoose.connect(db).then(() => console.log("DB connection successful!"));
+    mongoose
+      // @ts-ignore
+      .connect(db)
+      .then(() => console.log("DB connection successful!"));
   };
 
   /**

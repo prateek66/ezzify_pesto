@@ -1,7 +1,9 @@
 import express from "express";
+import axios from "axios";
 import fs from "fs";
 import path from "path";
 import getmac from "getmac";
+import { ExternalApis } from "../config";
 
 const moment = require("moment");
 
@@ -46,7 +48,9 @@ export class Logger {
         transactionsDetails: JSON.stringify(transactionsDetails),
       };
 
-      // await this._insertLogInDB(activityLogDetails);
+      if (this.request.originalUrl !== "/ezzify/api/v1/logs/activityLogs" && this.request.originalUrl !== "/ezzify/api/v1/logs/errorActivityLogs") {
+        await this._insertLogInDB(activityLogDetails);
+      }
     }
 
     if (!this.status.toString().startsWith("2")) {
@@ -67,7 +71,9 @@ export class Logger {
         transactionsDetails: JSON.stringify(transactionsDetails),
       };
 
-      // await this._insertErrorLogInDB(errorLogDetails);
+      if (this.request.originalUrl !== "/ezzify/api/v1/logs/activityLogs" && this.request.originalUrl !== "/ezzify/api/v1/logs/errorActivityLogs") {
+        await this._insertErrorLogInDB(errorLogDetails);
+      }
     }
   };
 
@@ -85,6 +91,34 @@ export class Logger {
 
     fs.appendFile(`${dir}/${fileName}`, log + "\n", (err) => {
       if (err) console.log(err);
+    });
+  };
+
+  private _insertLogInDB = (log: any) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(ExternalApis.ACTIVITY_LOG, log)
+        .then((response) => {
+          console.log(response.data);
+          resolve(response);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  };
+
+  private _insertErrorLogInDB = (log: any) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(ExternalApis.ERROR_LOG, log)
+        .then((response) => {
+          console.log(response.data);
+          resolve(response);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     });
   };
 }

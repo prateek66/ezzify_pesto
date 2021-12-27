@@ -32,3 +32,8 @@ export enum ErrorType {
   FORBIDDEN = "ForbiddenError",
   DB_ERROR = "DBError",
 }
+
+export enum ExternalApis {
+  ACTIVITY_LOG = "http://localhost:4200/ezzify/api/v1/logs/activityLogs",
+  ERROR_LOG = "http://localhost:4200/ezzify/api/v1/logs/errorActivityLogs",
+}

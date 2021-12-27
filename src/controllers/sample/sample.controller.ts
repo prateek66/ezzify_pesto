@@ -1,4 +1,5 @@
 import express from "express";
+import { ApiError, BadRequestError } from "../../core/apiError.core";
 import { SuccessResponse } from "../../core/apiResponse.core";
 
 import Controller from "../../interfaces/controller.interface";
@@ -18,6 +19,7 @@ export class SampleController extends BaseController implements Controller {
   };
 
   private _sample = this.catchAsyn(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    if (req.body.name !== "Harshit") return ApiError.handle(new BadRequestError("Harshit not found"), res);
     // 1. Sending Response to Client
     const result = {
       name: "Harshit",

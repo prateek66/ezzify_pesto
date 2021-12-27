@@ -1,17 +1,21 @@
+import "dotenv/config";
+
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import useragent from "express-useragent";
 
 import Controller from "./interfaces/controller.interface";
-import { ENVIRONMENT, PATH } from "./config";
+import { PATH } from "./config";
 import { ApiError, InternalError, NotFoundError } from "./core/apiError.core";
+
+const { ENVIRONMENT } = process.env;
 
 class App {
   public app: express.Application;
-  public port: number;
+  public port: string | undefined;
 
-  constructor(controllers: Controller[], port: number) {
+  constructor(controllers: Controller[], port: string | undefined) {
     this.app = express();
     this.port = port;
 

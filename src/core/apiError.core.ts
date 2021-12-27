@@ -1,5 +1,7 @@
+import "dotenv/config";
+
 import { Response } from "express";
-import { ENVIRONMENT, ErrorType } from "../config";
+import { ErrorType } from "../config";
 import {
   AuthFailureResponse,
   AccessTokenErrorResponse,
@@ -9,6 +11,8 @@ import {
   ForbiddenResponse,
   FailureMsgResponse,
 } from "./apiResponse.core";
+
+const { ENVIRONMENT } = process.env;
 
 export abstract class ApiError extends Error {
   constructor(public type: ErrorType, public message: string = "error") {

@@ -1,7 +1,11 @@
+import "dotenv/config";
+
 import chai from "chai";
 import chaiHttp from "chai-http";
 
-import { PATH, PORT } from "./../../src/config";
+import { PATH } from "./../../src/config";
+
+const { PORT } = process.env;
 
 chai.should();
 chai.use(chaiHttp);

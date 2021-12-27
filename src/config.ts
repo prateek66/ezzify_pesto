@@ -1,8 +1,6 @@
 export const ENVIRONMENT: "DEV" | "PROD" = "DEV";
-export const ENCRYPTION_KEY = "EZZIFY-PESTO";
 
 export const PATH = "/ezzify/api/v1";
-export const PORT = 4200;
 
 export enum StatusCode {
   SUCCESS = "10000",

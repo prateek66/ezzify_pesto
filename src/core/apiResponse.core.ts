@@ -1,7 +1,11 @@
+import "dotenv/config";
+
 import { Response } from "express";
-import { ENVIRONMENT, ResponseStatus, StatusCode } from "../config";
+import { ResponseStatus, StatusCode } from "../config";
 import { Security } from "./security.core";
 import { Logger } from "./logger.core";
+
+const { ENVIRONMENT } = process.env;
 
 abstract class ApiResponse {
   constructor(protected statusCode: StatusCode, protected status: ResponseStatus, protected message: string) {}

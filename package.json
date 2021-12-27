@@ -20,6 +20,7 @@
     "getmac": "^5.20.0",
     "helmet": "^4.6.0",
     "moment": "^2.29.1",
+    "mongoose": "^6.1.3",
     "ts-node-dev": "^1.1.8"
   },
   "devDependencies": {
@@ -51,6 +52,7 @@
     "getmac": "get the MAC address of the current machine you are on",
     "helmet": "helps you secure your express apps by setting various HTTP headers",
     "moment": "required for date manipulations",
+    "mongoose": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.",
     "ts-node-dev": "development tool for nodejs project",
     "chai": "BDD/TDD assertion library for node.js and the browser",
     "chai-http": "Chai HTTP provides an interface for live integration testing via superagent",

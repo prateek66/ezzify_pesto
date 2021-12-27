@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 import express from "express";
+import mongoose from "mongoose";
 import cors from "cors";
 import helmet from "helmet";
 import useragent from "express-useragent";
@@ -19,10 +20,19 @@ class App {
     this.app = express();
     this.port = port;
 
+    this._connectToDatabase();
     this._initalizeMiddlewares();
     this._initalizeControllers(controllers);
     this._initalizeErrorHandling();
   }
+
+  private _connectToDatabase = () => {
+    const { MONGO_CONNECTION_STRING, MONGO_PASSWORD } = process.env;
+    // @ts-ignore
+    const db = MONGO_CONNECTION_STRING?.replace("<PASSWORD>", MONGO_PASSWORD);
+    // @ts-ignore
+    mongoose.connect(db).then(() => console.log("DB connection successful!"));
+  };
 
   /**
    * A generic function to attach global level middlewares

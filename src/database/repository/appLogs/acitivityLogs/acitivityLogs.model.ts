@@ -36,6 +36,6 @@ const ActivityLogsSchema = new mongoose.Schema({
   },
 });
 
-const ActivityLogsModel = mongoose.model<ActivityLogsInterface & mongoose.Document>("ActivityLogs", ActivityLogsSchema);
+const ActivityLogsModel = mongoose.model<ActivityLogsInterface & mongoose.Document>("activity_logs", ActivityLogsSchema);
 
 export default ActivityLogsModel;

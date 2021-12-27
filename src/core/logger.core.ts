@@ -99,7 +99,6 @@ export class Logger {
       axios
         .post(ExternalApis.ACTIVITY_LOG, log)
         .then((response) => {
-          console.log(response.data);
           resolve(response);
         })
         .catch((err) => {
@@ -113,7 +112,6 @@ export class Logger {
       axios
         .post(ExternalApis.ERROR_LOG, log)
         .then((response) => {
-          console.log(response.data);
           resolve(response);
         })
         .catch((err) => {

@@ -40,6 +40,6 @@ const ErrorActivityLogsSchema = new mongoose.Schema({
   },
 });
 
-const ErrorActivityLogsModel = mongoose.model<ErrorActivityLogsInterface & mongoose.Document>("ErrorActivityLogs", ErrorActivityLogsSchema);
+const ErrorActivityLogsModel = mongoose.model<ErrorActivityLogsInterface & mongoose.Document>("error_activity_logs", ErrorActivityLogsSchema);
 
 export default ErrorActivityLogsModel;

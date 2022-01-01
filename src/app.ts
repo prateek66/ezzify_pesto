@@ -7,8 +7,9 @@ import helmet from "helmet";
 import useragent from "express-useragent";
 
 import Controller from "./interfaces/controller.interface";
-import { PATH } from "./config";
-import { ApiError, InternalError, NotFoundError } from "./core/apiError.core";
+import { PATH, StatusCode } from "./config";
+import { ApiError, BadRequestError, InternalError, NotFoundError } from "./core/apiError.core";
+import { Security } from "./core/security.core";
 
 const { ENVIRONMENT } = process.env;
 
@@ -50,6 +51,27 @@ class App {
     this.app.use(cors());
     this.app.use(helmet());
     this.app.use(useragent.express());
+
+    this.app.use(async (req, res, next) => {
+      if (
+        ENVIRONMENT === "PROD" &&
+        req.url !== `${PATH}/security/saltEncryption` &&
+        req.url !== `${PATH}/security/encryption` &&
+        req.url !== `${PATH}/security/decryption` &&
+        req.url !== `${PATH}/logs/activityLogs` &&
+        req.url !== `${PATH}/logs/errorActivityLogs`
+      ) {
+        const result = Security.decryption(req.body.data);
+        if (result === StatusCode.INVALID_ENCRYPTED_INPUT) {
+          ApiError.handle(new BadRequestError("Invalid Encrpted String"), res);
+          return;
+        } else {
+          req.body = result;
+          
+        }
+      }
+      next();
+    });
   };
 
   /**
@@ -88,7 +110,7 @@ class App {
    */
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`App listening on the port ${this.port}`);
+      console.log(`App listening on the port ${this.port} in ${ENVIRONMENT} env`);
     });
   }
 }

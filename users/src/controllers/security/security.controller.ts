@@ -1,13 +1,8 @@
 import express from "express";
-import { SuccessResponse } from "../../core/apiResponse.core";
-import { Security } from "../../core/security.core";
 import { DecryptionDTO } from "../../database/repository/security/decryption/decryption.dto";
 import { DecryptionModel } from "../../database/repository/security/decryption/decryption.model";
 
-import Controller from "../../interfaces/controller.interface";
-import sanitizeBody from "../../middlewares/sanitize.middleware";
-import validationMiddleware from "../../middlewares/validation.middleware";
-import { BaseController } from "../base.controller";
+import { BaseController, Controller, validationMiddleware, sanitizeBody, Security, SuccessResponse } from "@ezzify_pesto/common/build";
 
 export class SecurityController extends BaseController implements Controller {
   public path = "/security";

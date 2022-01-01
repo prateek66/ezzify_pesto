@@ -5,13 +5,12 @@ import mongoose from "mongoose";
 import cors from "cors";
 import helmet from "helmet";
 import useragent from "express-useragent";
+import { connectDB, config, ApiError, BadRequestError, InternalError, NotFoundError, Security } from "@ezzify_pesto/common/build";
 
 import Controller from "./interfaces/controller.interface";
 import { PATH, StatusCode } from "./config";
-import { ApiError, BadRequestError, InternalError, NotFoundError } from "./core/apiError.core";
-import { Security } from "./core/security.core";
 
-const { ENVIRONMENT } = process.env;
+const { ENVIRONMENT } = config;
 
 class App {
   public app: express.Application;
@@ -28,13 +27,7 @@ class App {
   }
 
   private _connectToDatabase = () => {
-    const { MONGO_CONNECTION_STRING, MONGO_PASSWORD } = process.env;
-    // @ts-ignore
-    const db = MONGO_CONNECTION_STRING?.replace("<PASSWORD>", MONGO_PASSWORD);
-    mongoose
-      // @ts-ignore
-      .connect(db)
-      .then(() => console.log("DB connection successful!"));
+    connectDB();
   };
 
   /**
@@ -67,7 +60,6 @@ class App {
           return;
         } else {
           req.body = result;
-          
         }
       }
       next();

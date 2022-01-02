@@ -1,5 +1,5 @@
 {
-  "name": "ezzify-pesto-backend",
+  "name": "@ezzify/common",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",

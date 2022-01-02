@@ -5,7 +5,7 @@
  */
 const sanitizeBody = (classModel: any, body: any) => {
   Object.keys(body).forEach((key) => {
-    if (!classModel.hasOwnProperty(key))  {
+    if (!classModel.hasOwnProperty(key)) {
       delete body[key];
     }
   });

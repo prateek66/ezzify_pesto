@@ -1,7 +1,6 @@
 {
-  "name": "@ezzify/common",
+  "name": "@ezzify_pesto/common",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start:dev": "nodemon",
@@ -67,5 +66,6 @@
   "bugs": {
     "url": "https://github.com/harshitchouhan/ezzify-pesto-backend/issues"
   },
-  "homepage": "https://github.com/harshitchouhan/ezzify-pesto-backend#readme"
+  "homepage": "https://github.com/harshitchouhan/ezzify-pesto-backend#readme",
+  "description": ""
 }

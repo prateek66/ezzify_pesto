@@ -8,7 +8,7 @@
     "build": "rimraf ./build && tsc && cp package.json build/ && cp package-lock.json build/",
     "start": "npm run build && node build/server.js",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' --timeout 10000",
-    "pub": "git add . && git commit -m \"Updates\" && git push -u origin dev && cd build && npm version patch && npm publish"
+    "pub": "npm run build && git add . && git commit -m \"Updates\" && git push -u origin dev && cd build && npm version patch && npm publish --access public"
   },
   "dependencies": {
     "axios": "^0.24.0",

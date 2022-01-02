@@ -47,7 +47,7 @@ export class Logger {
       };
 
       if (this.request.originalUrl !== "/ezzify/api/v1/logs/activityLogs" && this.request.originalUrl !== "/ezzify/api/v1/logs/errorActivityLogs") {
-        await this._insertLogInDB(activityLogDetails);
+        // await this._insertLogInDB(activityLogDetails);
       }
     }
 
@@ -70,7 +70,7 @@ export class Logger {
       };
 
       if (this.request.originalUrl !== "/ezzify/api/v1/logs/activityLogs" && this.request.originalUrl !== "/ezzify/api/v1/logs/errorActivityLogs") {
-        await this._insertErrorLogInDB(errorLogDetails);
+        // await this._insertErrorLogInDB(errorLogDetails);
       }
     }
   };

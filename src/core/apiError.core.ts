@@ -11,7 +11,9 @@ import {
   FailureMsgResponse,
 } from "./apiResponse.core";
 
-const { ENVIRONMENT } = process.env;
+import { config } from "./../config";
+
+const { ENVIRONMENT } = config;
 
 enum ErrorType {
   BAD_TOKEN = "BadTokenError",

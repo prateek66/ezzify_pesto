@@ -9,10 +9,7 @@ const db = MONGO_CONNECTION_STRING?.replace("<PASSWORD>", MONGO_PASSWORD);
 const connectDB = () => {
   mongoose
     // @ts-ignore
-    .connect(db, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(db)
     .then(() => {
       console.log("DB connection successful!");
     })

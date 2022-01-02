@@ -4,7 +4,9 @@ import { Response } from "express";
 import Security from "./security.core";
 import { Logger } from "./logger.core";
 
-const { ENVIRONMENT } = process.env;
+import { config } from "./../config";
+
+const { ENVIRONMENT } = config;
 
 enum StatusCode {
   SUCCESS = "10000",

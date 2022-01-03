@@ -60,13 +60,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harshitchouhan/ezzify-pesto-backend.git"
+    "url": "git+https://github.com/prateek66/ezzify_pesto.git"
   },
   "author": "Harshit & Prateek",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/harshitchouhan/ezzify-pesto-backend/issues"
+    "url": "https://github.com/prateek66/ezzify_pesto"
   },
-  "homepage": "https://github.com/harshitchouhan/ezzify-pesto-backend#readme",
+  "homepage": "https://github.com/prateek66/ezzify_pesto",
   "description": ""
 }

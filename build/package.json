@@ -1,6 +1,6 @@
 {
   "name": "@ezzify/common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "server.js",
   "scripts": {
     "start:dev": "nodemon",

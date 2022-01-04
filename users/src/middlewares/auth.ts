@@ -1,7 +1,7 @@
 // will move to common package
 import express from "express";
 import jwt from "jsonwebtoken";
-import  User from "../database/repository/users/user.model";
+import  User from "../database/repository/users/users.model";
 
 interface decodedJWT {
   _id: string

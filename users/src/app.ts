@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import useragent from "express-useragent";
-import { connectDB, config, ApiError, BadRequestError, InternalError, NotFoundError, Security,Controller } from "@ezzify/common/build";
+import { connectDB, config, ApiError, BadRequestError, InternalError, NotFoundError, Security, Controller } from "@ezzify/common/build";
 
 import { PATH, StatusCode } from "./config";
 

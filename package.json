@@ -1,5 +1,5 @@
 {
-  "name": "@ezzify/common",
+  "name": "@common/ezzify_common",
   "version": "1.0.7",
   "main": "server.js",
   "scripts": {

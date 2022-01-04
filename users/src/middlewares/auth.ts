@@ -13,9 +13,6 @@ const auth = (roles: any) => async (req:any, res: express.Response, next:express
     
      var user = await User.findOne({ _id, "tokens.token": token });
 
-    console.log('====================================');
-    console.log(user);
-    console.log('====================================');
     if (!user) {
       throw new Error();
     }
@@ -25,7 +22,7 @@ const auth = (roles: any) => async (req:any, res: express.Response, next:express
     
     if (req.user) { 
       
-      if (roles.indexOf(req.user.role) !== -1) next(); 
+      if (roles.indexOf(req.user.roles) !== -1) next(); 
       
       else res.status(403).send({ message: "you are unauthorized to use this API!" }); 
       

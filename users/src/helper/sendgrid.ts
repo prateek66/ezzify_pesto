@@ -3,14 +3,14 @@
 import sgmail from "@sendgrid/mail";
 
 export const sendMail = async (otp: string,email: string) => {
-    sgmail.setApiKey('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');  // this need to be in .env
+    sgmail.setApiKey('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');  // this need to be in .env
 
 
     const message = {
         to: email,
         from: {
             name: "Ezzify",
-            email: "uraan.prateek@gmail.com"   //move to .env
+            email: "kawthekar56@gmail.com"   //move to .env
         },
         subject: 'Verify OTP',
         text: 'This is your OTP please verify yourself',

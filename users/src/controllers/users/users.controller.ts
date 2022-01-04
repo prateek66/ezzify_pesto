@@ -9,18 +9,17 @@ import {
   SuccessMsgResponse,
   ApiError,
   NotFoundError,
+  UsersDto,
+  UserBodyInterface,
+  UsersProps,
+  UsersDB,
+  VerifyDto,
+  verifyProps,
+  VerifyInterface,
+  upload,
+  auth
 } from "@ezzify/common/build";
 
-// import { signupUserService, verifyOtpService } from "../../services/user_services";
-import { UsersDto } from "../../database/repository/users/signup/users.dto";
-import { UserBodyInterface } from "../../interfaces/users/userBody.interface";
-import { UsersProps } from "../../database/repository/users/signup/users.props";
-import { UsersDB } from "../../database/repository/users/users.db";
-import { VerifyDto } from "../../database/repository/users/verify/verify.dto";
-import { verifyProps } from "../../database/repository/users/verify/verify.props";
-import { VerifyInterface } from "../../interfaces/users/verify.interface";
-import { upload } from "../../middlewares/uploadAWS";
-import auth from "../../middlewares/auth";
 
 export class UserController extends BaseController implements Controller {
   public path = "/users";

@@ -10,7 +10,7 @@
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' --timeout 10000"
   },
   "dependencies": {
-    "@ezzify/common": "^1.0.3",
+    "@ezzify/common": "^1.0.7",
     "@sendgrid/mail": "^7.6.0",
     "aws-sdk": "^2.1049.0",
     "axios": "^0.24.0",

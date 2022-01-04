@@ -2,7 +2,7 @@ import express from "express";
 import { DecryptionDTO } from "../../database/repository/security/decryption/decryption.dto";
 import { DecryptionModel } from "../../database/repository/security/decryption/decryption.model";
 
-import { BaseController, Controller, validationMiddleware, sanitizeBody, Security, SuccessResponse } from "@ezzify_pesto/common/build";
+import { BaseController, Controller, validationMiddleware, sanitizeBody, Security, SuccessResponse } from "@ezzify/common/build";
 
 export class SecurityController extends BaseController implements Controller {
   public path = "/security";

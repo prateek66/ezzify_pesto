@@ -1,9 +1,5 @@
 import express from "express";
-import { ApiError, BadRequestError } from "../../core/apiError.core";
-import { SuccessResponse } from "../../core/apiResponse.core";
-
-import Controller from "../../interfaces/controller.interface";
-import { BaseController } from "../base.controller";
+import { ApiError, BadRequestError,SuccessResponse,BaseController,Controller } from "@ezzify/common/build";
 
 export class SampleController extends BaseController implements Controller {
   public path = "/sample";
@@ -16,6 +12,8 @@ export class SampleController extends BaseController implements Controller {
 
   private _initializeRoutes = () => {
     this.router.post(`${this.path}`, this._sample);
+        this.router.get(`${this.path}`, this._getSample);
+
   };
 
   private _sample = this.catchAsyn(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -28,4 +26,15 @@ export class SampleController extends BaseController implements Controller {
 
     new SuccessResponse("success", result).send(res);
   });
+
+  private _getSample = this.catchAsyn(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+     // 1. Sending Response to Client
+    const result = {
+      name: "Harshit",
+      age: 22,
+    };
+
+    new SuccessResponse("success", result).send(res);
+  });
 }
+

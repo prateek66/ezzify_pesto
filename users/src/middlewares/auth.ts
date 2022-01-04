@@ -1,48 +1,31 @@
 // will move to common package
 import express from "express";
+import { ApiError, AuthFailureError, config, ForbiddenError, NotFoundError } from "@ezzify/common/build";
 import jwt from "jsonwebtoken";
-import  User from "../database/repository/users/users.model";
+import User from "../database/repository/users/users.model";
+import { decodedJWT } from "../interfaces/auth/jwt.interface";
 
-interface decodedJWT {
-  _id: string
-}
-const auth = (roles: any) => async (req:any, res: express.Response, next:express.NextFunction) => {
+const { ENCRYPTION_KEY } = config;
+
+const auth = (roles: any) => async (req: any, res: express.Response, next: express.NextFunction) => {
   try {
     const token = req.header("Authorization").replace("Bearer ", "");
-    const {_id} = jwt.verify(token, 'ezzify') as decodedJWT;
-    
-     var user = await User.findOne({ _id, "tokens.token": token });
+    const { _id } = jwt.verify(token, ENCRYPTION_KEY) as decodedJWT;
 
-    console.log('====================================');
-    console.log(user);
-    console.log('====================================');
-    if (!user) {
-      throw new Error();
-    }
+    var user = await User.findOne({ _id, "tokens.token": token });
+
+    if (!user) return ApiError.handle(new NotFoundError("User not found"), res);
 
     req.token = token;
     req.user = user;
-    
-    if (req.user) { 
-      
-      if (roles.indexOf(req.user.role) !== -1) next(); 
-      
-      else res.status(403).send({ message: "you are unauthorized to use this API!" }); 
-      
-    } else {
-      
-      res.status(401).send({ message: "unauthorized" });
-      
+
+    if (roles.indexOf(req.user.roles) === -1) {
+      return ApiError.handle(new ForbiddenError(), res);
     }
 
-    //next();
+    next();
   } catch (e) {
-    res.status(401).send({
-      success: true,
-      data: null,
-      message: "Please authenticate.",
-      error: null,
-    });
+    return ApiError.handle(new AuthFailureError("Authentication failed"), res);
   }
 };
 

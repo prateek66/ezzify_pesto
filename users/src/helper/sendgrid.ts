@@ -19,7 +19,5 @@ export const sendMail = async (otp: string, email: string) => {
   const sendmail = await sgmail.send(message);
   if (sendmail) {
     return sendmail;
-  } else {
-    return new Error("something went wrong!!");
-  }
+  } else return new Error("something went wrong!!");
 };

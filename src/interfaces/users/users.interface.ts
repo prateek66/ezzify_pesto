@@ -1,20 +1,18 @@
 export interface UsersInterface {
   firstName: string;
-  lastname: string;
-  mobile_number: number;
+  lastName: string;
+  mobileNumber: number;
   address: string;
   profileImage: string;
   email: string;
   otpVerify: string;
-  is_emaiVerified: boolean;
+  isEmaiVerified: boolean;
   city: string;
   state: string;
   roles: string;
   amount: number;
   isActive: boolean;
-  availabale_date: string;
-  available_time: string;
-  tokens?: any[];
-  token: string;
-  device_token: string;
+  availabaleDate: string;
+  availableTime: string;
+  tokens?: { token: string; deviceToken: string }[];
 }

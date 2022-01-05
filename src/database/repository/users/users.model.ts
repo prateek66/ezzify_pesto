@@ -21,20 +21,20 @@ interface UserModel extends Model<UserDocument> {
 const UserSchema: Schema<UserDocument> = new mongoose.Schema(
   {
     firstName: { type: String, default: " " },
-    lastname: { type: String, default: " " },
-    mobile_number: { type: Number, default: 0 },
+    lastName: { type: String, default: " " },
+    mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
     profileImage: { type: String, default: " " },
     email: { type: String, default: "" },
     otpVerify: { type: String, trim: true, default: " " },
-    is_emaiVerified: { type: Boolean, default: false },
+    isEmaiVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },
     amount: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
-    availabale_date: { type: String, default: " " },
-    available_time: { type: String, default: " " },
+    availabaleDate: { type: String, default: " " },
+    availableTime: { type: String, default: " " },
     tokens: [
       {
         token: {

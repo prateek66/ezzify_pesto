@@ -17,9 +17,8 @@ import {
   verifyProps,
   VerifyInterface,
   upload,
-  auth
+  auth,
 } from "@ezzify/common/build";
-
 
 export class UserController extends BaseController implements Controller {
   public path = "/users";
@@ -58,7 +57,7 @@ export class UserController extends BaseController implements Controller {
   private updateUser = this.catchAsyn(async (req: any, res: express.Response, next: express.NextFunction) => {
     if (!req.user) return ApiError.handle(new NotFoundError("Please Login"), res);
 
-    let newDetails = { ...req.body, profileImage: req.file.location };
+    let newDetails = { ...req.body, profileImage: req?.file?.location };
 
     const result = await this.db.updateUserService(newDetails, req.user._id, res);
     new SuccessResponse("success", result).send(res);

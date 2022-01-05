@@ -1,8 +1,9 @@
 import "dotenv/config";
 
 import CryptoJS from "crypto-js";
+import { config } from "./../config";
 
-const { ENCRYPTION_KEY } = process.env;
+const { ENVIRONMENT, ENCRYPTION_KEY } = config;
 
 enum StatusCode {
   INVALID_ENCRYPTED_INPUT = "10004",

@@ -10,7 +10,9 @@ export class ServicesDB {
     public createServices = (data: any, res: express.Response) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const newService = await Services.create({ ...data });
+
+                let createData = { ...data, image: data.image };
+                const newService = await Services.create(createData);
 
                 if (!newService) {
                     ApiError.handle(new BadRequestError("Service data provided not correct"), res);
@@ -45,8 +47,8 @@ export class ServicesDB {
     public updateServices = (data: any, id: string, res: express.Response) => {
         return new Promise(async (resolve, reject) => {
             try {
-
-                const updateService = await Services.findByIdAndUpdate(id, data, { new: true });
+                let updatedData = { ...data, image: data.image };
+                const updateService = await Services.findByIdAndUpdate(id, updatedData, { new: true });
                 
                 if (!updateService) {
                     ApiError.handle(new BadRequestError("Cannot update service , something went wrong!"),res);

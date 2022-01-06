@@ -58,12 +58,13 @@ var ServicesDB = /** @class */ (function () {
         var _this = this;
         this.createServices = function (data, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var newService, err_1;
+                var createData, newService, err_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            return [4 /*yield*/, service_model_1.default.create(__assign({}, data))];
+                            createData = __assign(__assign({}, data), { image: data.image });
+                            return [4 /*yield*/, service_model_1.default.create(createData)];
                         case 1:
                             newService = _a.sent();
                             if (!newService) {
@@ -108,12 +109,13 @@ var ServicesDB = /** @class */ (function () {
         };
         this.updateServices = function (data, id, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var updateService, err_3;
+                var updatedData, updateService, err_3;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            return [4 /*yield*/, service_model_1.default.findByIdAndUpdate(id, data, { new: true })];
+                            updatedData = __assign(__assign({}, data), { image: data.image });
+                            return [4 /*yield*/, service_model_1.default.findByIdAndUpdate(id, updatedData, { new: true })];
                         case 1:
                             updateService = _a.sent();
                             if (!updateService) {

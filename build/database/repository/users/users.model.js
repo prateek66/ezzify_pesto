@@ -40,10 +40,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
-var config_1 = require("../../../config");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken")); // should be remove and move to common package
 var genrate_otp_1 = require("../../../helper/genrate_otp");
-var ENCRYPTION_KEY = config_1.config.ENCRYPTION_KEY;
+var config_1 = __importDefault(require("../../../config/config"));
+var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var UserSchema = new mongoose_1.default.Schema({
     firstName: { type: String, default: " " },
     lastName: { type: String, default: " " },

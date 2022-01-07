@@ -1,7 +1,8 @@
 {
-  "name": "@ezzify/common",
-  "version": "1.0.12",
-  "main": "server.js",
+  "name": "@types/common",
+  "version": "1.0.0",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc && cp package.json build/ && cp package-lock.json build/",

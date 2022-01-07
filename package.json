@@ -1,6 +1,6 @@
 {
   "name": "@ezzify/common",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {

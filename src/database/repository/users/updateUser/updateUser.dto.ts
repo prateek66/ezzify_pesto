@@ -43,6 +43,6 @@ export class UpdateUsersDto {
 
   @IsIn(["user", "vendor"])
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   roles!: string;
 }

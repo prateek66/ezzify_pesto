@@ -46,6 +46,16 @@ var UpdateUsersDto = /** @class */ (function () {
         (0, class_validator_1.IsEmail)(),
         (0, class_validator_1.IsOptional)()
     ], UpdateUsersDto.prototype, "isActive", void 0);
+    __decorate([
+        (0, class_validator_1.IsBoolean)(),
+        (0, class_validator_1.IsEmail)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateUsersDto.prototype, "isEmaiVerified", void 0);
+    __decorate([
+        (0, class_validator_1.IsIn)(["user", "vendor"]),
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsNotEmpty)()
+    ], UpdateUsersDto.prototype, "roles", void 0);
     return UpdateUsersDto;
 }());
 exports.UpdateUsersDto = UpdateUsersDto;

@@ -6,4 +6,6 @@ export declare class UpdateUsersDto {
     city: string;
     state: string;
     isActive: string;
+    isEmaiVerified: string;
+    roles: string;
 }

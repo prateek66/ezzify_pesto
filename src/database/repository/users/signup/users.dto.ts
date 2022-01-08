@@ -6,8 +6,5 @@ export class UsersDto {
   @IsEmail()
   email!: string;
 
-  @IsIn(["user", "vendor"])
-  @IsString()
-  @IsNotEmpty()
-  roles!: string;
+ 
 }

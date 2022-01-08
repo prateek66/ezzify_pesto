@@ -107,7 +107,7 @@ var UsersDB = /** @class */ (function () {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
                             updatedObject = __assign(__assign({}, data), { profileImage: data.profileImage });
-                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, { $set: { updatedObject: updatedObject } }, { new: true })];
+                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, updatedObject, { new: true })];
                         case 1:
                             updateUser = _a.sent();
                             if (!updateUser) {

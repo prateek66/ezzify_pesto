@@ -6,21 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersDto = void 0;
+exports.UpdateServiceDto = void 0;
 var class_validator_1 = require("class-validator");
-var UsersDto = /** @class */ (function () {
-    function UsersDto() {
+var UpdateServiceDto = /** @class */ (function () {
+    function UpdateServiceDto() {
     }
     __decorate([
         (0, class_validator_1.IsString)(),
-        (0, class_validator_1.IsNotEmpty)(),
-        (0, class_validator_1.IsEmail)()
-    ], UsersDto.prototype, "email", void 0);
-    __decorate([
-        (0, class_validator_1.IsIn)(["user", "vendor"]),
-        (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsNotEmpty)()
-    ], UsersDto.prototype, "roles", void 0);
-    return UsersDto;
+    ], UpdateServiceDto.prototype, "id", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateServiceDto.prototype, "name", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.MaxLength)(250),
+        (0, class_validator_1.MinLength)(15),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateServiceDto.prototype, "description", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateServiceDto.prototype, "image", void 0);
+    return UpdateServiceDto;
 }());
-exports.UsersDto = UsersDto;
+exports.UpdateServiceDto = UpdateServiceDto;

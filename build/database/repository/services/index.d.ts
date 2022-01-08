@@ -4,3 +4,5 @@ export { ServiceDto } from "./createServices/service.dto";
 export { ServiceProps } from "./createServices/services.props";
 export { DeleteServiceDto } from "./deleteService/deleteServic.dto";
 export { DeleteServiceProps } from "./deleteService/deleteService.props";
+export { UpdateServiceDto } from "./updateServices/updateService.dto";
+export { UpdateServiceProps } from "./updateServices/updateService.props";

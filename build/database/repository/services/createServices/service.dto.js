@@ -17,7 +17,9 @@ var ServiceDto = /** @class */ (function () {
     ], ServiceDto.prototype, "name", void 0);
     __decorate([
         (0, class_validator_1.IsString)(),
-        (0, class_validator_1.IsNotEmpty)()
+        (0, class_validator_1.IsNotEmpty)(),
+        (0, class_validator_1.MaxLength)(250),
+        (0, class_validator_1.MinLength)(15)
     ], ServiceDto.prototype, "description", void 0);
     __decorate([
         (0, class_validator_1.IsString)(),

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteServiceProps = exports.DeleteServiceDto = exports.ServiceProps = exports.ServiceDto = exports.ServicesDB = exports.Services = void 0;
+exports.UpdateServiceProps = exports.UpdateServiceDto = exports.DeleteServiceProps = exports.DeleteServiceDto = exports.ServiceProps = exports.ServiceDto = exports.ServicesDB = exports.Services = void 0;
 var service_model_1 = require("./service.model");
 Object.defineProperty(exports, "Services", { enumerable: true, get: function () { return __importDefault(service_model_1).default; } });
 var services_db_1 = require("./services.db");
@@ -16,3 +16,7 @@ var deleteServic_dto_1 = require("./deleteService/deleteServic.dto");
 Object.defineProperty(exports, "DeleteServiceDto", { enumerable: true, get: function () { return deleteServic_dto_1.DeleteServiceDto; } });
 var deleteService_props_1 = require("./deleteService/deleteService.props");
 Object.defineProperty(exports, "DeleteServiceProps", { enumerable: true, get: function () { return deleteService_props_1.DeleteServiceProps; } });
+var updateService_dto_1 = require("./updateServices/updateService.dto");
+Object.defineProperty(exports, "UpdateServiceDto", { enumerable: true, get: function () { return updateService_dto_1.UpdateServiceDto; } });
+var updateService_props_1 = require("./updateServices/updateService.props");
+Object.defineProperty(exports, "UpdateServiceProps", { enumerable: true, get: function () { return updateService_props_1.UpdateServiceProps; } });

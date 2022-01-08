@@ -72,7 +72,7 @@ var UserSchema = new mongoose_1.default.Schema({
     lastName: { type: String, default: " " },
     mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
-    profileImage: { type: String, default: " " },
+    profileImage: { type: String, default: "https://ezzifypesto.s3.ap-south-1.amazonaws.com/user.png" },
     adharCardImage: { type: String, default: " " },
     panCardImage: { type: String, default: " " },
     email: { type: String, default: "" },

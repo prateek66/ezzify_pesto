@@ -1,6 +1,6 @@
 export const ENVIRONMENT: "DEV" | "PROD" = "DEV";
 
-export const PATH = "/ezzify/api/v1";
+export const PATH = "/v1";
 
 export enum StatusCode {
   SUCCESS = "10000",

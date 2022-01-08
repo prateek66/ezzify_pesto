@@ -5,9 +5,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import helmet from "helmet";
 import useragent from "express-useragent";
-import { connectDB, config, ApiError, BadRequestError, InternalError, NotFoundError, Security } from "@ezzify_pesto/common/build";
+import { connectDB, config, ApiError, BadRequestError, InternalError, NotFoundError, Security,Controller } from "@ezzify/common/build";
 
-import Controller from "./interfaces/controller.interface";
 import { PATH, StatusCode } from "./config";
 
 const { ENVIRONMENT } = config;

@@ -1,10 +1,10 @@
 import mongoose, { Model, Schema } from "mongoose";
-import { config } from "../../../config";
 import { UsersInterface } from "../../../interfaces/users/users.interface";
 
 import jwt from "jsonwebtoken"; // should be remove and move to common package
 import { sendMail } from "../../../helper/sendgrid"; // move to common package
 import { generateOtp } from "../../../helper/genrate_otp";
+import config from "../../../config/config";
 
 const { ENCRYPTION_KEY } = config;
 

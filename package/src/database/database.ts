@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import { config } from "./../config";
+import config from "../config/config";
+
 
 const { MONGO_CONNECTION_STRING, MONGO_PASSWORD } = config;
 // @ts-ignore

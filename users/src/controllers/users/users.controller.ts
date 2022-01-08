@@ -16,6 +16,8 @@ import {
   VerifyDto,
   verifyProps,
   VerifyInterface,
+  UpdateUsersProps,
+  UpdateUsersDto,
   upload,
   auth,
 } from "@ezzify/common/build";
@@ -35,7 +37,7 @@ export class UserController extends BaseController implements Controller {
   private _initializeRoutes = () => {
     this.router.post(`${this.path}/signup`, validationMiddleware(UsersDto), this.signupUser);
     this.router.post(`${this.path}/verify`, validationMiddleware(VerifyDto), this.verifyUser);
-    this.router.patch(`${this.path}/update_user`, upload.single("file"), auth(["user"]), this.updateUser);
+    this.router.patch(`${this.path}/update_user`, validationMiddleware(UpdateUsersDto), upload.single("file"), auth(["user"]), this.updateUser);
   };
 
   private signupUser = this.catchAsyn(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -55,7 +57,8 @@ export class UserController extends BaseController implements Controller {
   });
 
   private updateUser = this.catchAsyn(async (req: any, res: express.Response, next: express.NextFunction) => {
-    if (!req.user) return ApiError.handle(new NotFoundError("Please Login"), res);
+
+    req.body = sanitizeBody(UpdateUsersProps, req.body);
 
     let newDetails = { ...req.body, profileImage: req?.file?.location };
 

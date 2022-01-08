@@ -50,75 +50,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersDB = void 0;
+exports.VendorDB = void 0;
 var apiError_core_1 = require("../../../core/apiError.core");
-var users_model_1 = __importDefault(require("./users.model"));
-var UsersDB = /** @class */ (function () {
-    function UsersDB() {
+var users_model_1 = __importDefault(require("../users/users.model"));
+var VendorDB = /** @class */ (function () {
+    function VendorDB() {
         var _this = this;
-        this.signupUser = function (email, res) {
-            return new Promise(function (resolve, reject) {
-                try {
-                    var user = users_model_1.default.findByCredentials(email);
-                    if (!user) {
-                        apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User with this email not found"), res);
-                        return;
-                    }
-                    resolve(user);
-                }
-                catch (err) {
-                    apiError_core_1.ApiError.handle(err, res);
-                }
-            });
-        };
-        this.verifyOtpService = function (data, res) {
+        this.updateVendor = function (id, data, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var user, token, err_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, users_model_1.default.userOtpVerify(data.id, data.otp)];
-                        case 1:
-                            user = _a.sent();
-                            return [4 /*yield*/, user.generateAuthToken()];
-                        case 2:
-                            token = _a.sent();
-                            if (!user) {
-                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User with this email not found"), res);
-                                return [2 /*return*/];
-                            }
-                            resolve({ user: user, token: token });
-                            return [3 /*break*/, 4];
-                        case 3:
-                            err_1 = _a.sent();
-                            apiError_core_1.ApiError.handle(err_1, res);
-                            return [3 /*break*/, 4];
-                        case 4: return [2 /*return*/];
-                    }
-                });
-            }); });
-        };
-        this.updateUserService = function (data, id, res) {
-            return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var updatedObject, updateUser, err_2;
+                var updatedData, updateVendor, err_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            updatedObject = __assign(__assign({}, data), { profileImage: data.profileImage });
-                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, { $set: { updatedObject: updatedObject } }, { new: true })];
+                            updatedData = __assign(__assign({}, data), { profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage });
+                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, { $set: { updatedData: updatedData } }, { new: true })];
                         case 1:
-                            updateUser = _a.sent();
-                            if (!updateUser) {
-                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User not found"), res);
+                            updateVendor = _a.sent();
+                            if (!updateVendor) {
+                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("failed to update the vendor details"), res);
                                 return [2 /*return*/];
                             }
-                            resolve(updateUser);
+                            resolve(updateVendor);
                             return [3 /*break*/, 3];
                         case 2:
-                            err_2 = _a.sent();
-                            apiError_core_1.ApiError.handle(err_2, res);
+                            err_1 = _a.sent();
+                            apiError_core_1.ApiError.handle(err_1, res);
                             return [3 /*break*/, 3];
                         case 3: return [2 /*return*/];
                     }
@@ -126,6 +83,6 @@ var UsersDB = /** @class */ (function () {
             }); });
         };
     }
-    return UsersDB;
+    return VendorDB;
 }());
-exports.UsersDB = UsersDB;
+exports.VendorDB = VendorDB;

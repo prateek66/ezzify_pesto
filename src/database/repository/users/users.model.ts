@@ -18,6 +18,11 @@ interface UserModel extends Model<UserDocument> {
   userOtpVerify(id: string, otp: string): Promise<UserDocument>;
 }
 
+const Service = new mongoose.Schema({
+  serviceID: { type: Schema.Types.ObjectId, ref: "Services" },
+  basePrice: { type: Number, default: 0 }
+});
+
 const UserSchema: Schema<UserDocument> = new mongoose.Schema(
   {
     firstName: { type: String, default: " " },
@@ -25,6 +30,8 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
     profileImage: { type: String, default: " " },
+    adharCardImage: { type: String, default: " " },
+    panCardImage: { type: String, default: " " },
     email: { type: String, default: "" },
     otpVerify: { type: String, trim: true, default: " " },
     isEmaiVerified: { type: Boolean, default: false },
@@ -33,6 +40,8 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },
     amount: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
+    isApproved: { type: Boolean, default: false },
+    services: [Service],
     availabaleDate: { type: String, default: " " },
     availableTime: { type: String, default: " " },
     tokens: [

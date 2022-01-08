@@ -30,8 +30,8 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
     profileImage: { type: String, default: "https://ezzifypesto.s3.ap-south-1.amazonaws.com/user.png" },
-    adharCardImage: { type: String, default: " " },
-    panCardImage: { type: String, default: " " },
+    adharCardImage: { type: String, default: null },
+    panCardImage: { type: String, default: null },
     email: { type: String, default: "" },
     otpVerify: { type: String, trim: true, default: " " },
     isEmaiVerified: { type: Boolean, default: false },
@@ -42,8 +42,8 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     isActive: { type: Boolean, default: false },
     isApproved: { type: Boolean, default: false },
     services: [Service],
-    availabaleDate: { type: String, default: " " },
-    availableTime: { type: String, default: " " },
+    availabaleDate: { type: String, default: null },
+    availableTime: { type: String, default: null},
     tokens: [
       {
         token: {

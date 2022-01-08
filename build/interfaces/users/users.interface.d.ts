@@ -4,6 +4,8 @@ export interface UsersInterface {
     mobileNumber: number;
     address: string;
     profileImage: string;
+    adharCardImage: string;
+    panCardImage: string;
     email: string;
     otpVerify: string;
     isEmaiVerified: boolean;
@@ -13,7 +15,12 @@ export interface UsersInterface {
     amount: number;
     isActive: boolean;
     availabaleDate: string;
+    services: {
+        serviceID: string;
+        basePrice: number;
+    }[];
     availableTime: string;
+    isApproved: boolean;
     tokens?: {
         token: string;
         deviceToken: string;

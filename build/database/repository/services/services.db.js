@@ -50,71 +50,53 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersDB = void 0;
+exports.ServicesDB = void 0;
 var apiError_core_1 = require("../../../core/apiError.core");
-var users_model_1 = __importDefault(require("./users.model"));
-var UsersDB = /** @class */ (function () {
-    function UsersDB() {
+var service_model_1 = __importDefault(require("./service.model"));
+var ServicesDB = /** @class */ (function () {
+    function ServicesDB() {
         var _this = this;
-        this.signupUser = function (email, res) {
-            return new Promise(function (resolve, reject) {
-                try {
-                    var user = users_model_1.default.findByCredentials(email);
-                    if (!user) {
-                        apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User with this email not found"), res);
-                        return;
-                    }
-                    resolve(user);
-                }
-                catch (err) {
-                    apiError_core_1.ApiError.handle(err, res);
-                }
-            });
-        };
-        this.verifyOtpService = function (data, res) {
+        this.createServices = function (data, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var user, token, err_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, users_model_1.default.userOtpVerify(data.id, data.otp)];
-                        case 1:
-                            user = _a.sent();
-                            return [4 /*yield*/, user.generateAuthToken()];
-                        case 2:
-                            token = _a.sent();
-                            if (!user) {
-                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User with this email not found"), res);
-                                return [2 /*return*/];
-                            }
-                            resolve({ user: user, token: token });
-                            return [3 /*break*/, 4];
-                        case 3:
-                            err_1 = _a.sent();
-                            apiError_core_1.ApiError.handle(err_1, res);
-                            return [3 /*break*/, 4];
-                        case 4: return [2 /*return*/];
-                    }
-                });
-            }); });
-        };
-        this.updateUserService = function (data, id, res) {
-            return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var updatedObject, updateUser, err_2;
+                var createData, newService, err_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            updatedObject = __assign(__assign({}, data), { profileImage: data.profileImage });
-                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, { $set: { updatedObject: updatedObject } }, { new: true })];
+                            createData = __assign(__assign({}, data), { image: data.image });
+                            return [4 /*yield*/, service_model_1.default.create(createData)];
                         case 1:
-                            updateUser = _a.sent();
-                            if (!updateUser) {
-                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User not found"), res);
+                            newService = _a.sent();
+                            if (!newService) {
+                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("Service data provided not correct"), res);
                                 return [2 /*return*/];
                             }
-                            resolve(updateUser);
+                            resolve(newService);
+                            return [3 /*break*/, 3];
+                        case 2:
+                            err_1 = _a.sent();
+                            apiError_core_1.ApiError.handle(err_1, res);
+                            return [3 /*break*/, 3];
+                        case 3: return [2 /*return*/];
+                    }
+                });
+            }); });
+        };
+        this.viewServices = function (req, res) {
+            return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+                var viewServices, err_2;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 2, , 3]);
+                            return [4 /*yield*/, service_model_1.default.find({})];
+                        case 1:
+                            viewServices = _a.sent();
+                            if (!viewServices) {
+                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("Failed to fetch services from database"), res);
+                                return [2 /*return*/];
+                            }
+                            resolve(viewServices);
                             return [3 /*break*/, 3];
                         case 2:
                             err_2 = _a.sent();
@@ -125,7 +107,58 @@ var UsersDB = /** @class */ (function () {
                 });
             }); });
         };
+        this.updateServices = function (data, id, res) {
+            return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+                var updatedData, updateService, err_3;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 2, , 3]);
+                            updatedData = __assign(__assign({}, data), { image: data.image });
+                            return [4 /*yield*/, service_model_1.default.findByIdAndUpdate(id, updatedData, { new: true })];
+                        case 1:
+                            updateService = _a.sent();
+                            if (!updateService) {
+                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("Cannot update service , something went wrong!"), res);
+                                return [2 /*return*/];
+                            }
+                            resolve(updateService);
+                            return [3 /*break*/, 3];
+                        case 2:
+                            err_3 = _a.sent();
+                            apiError_core_1.ApiError.handle(err_3, res);
+                            return [3 /*break*/, 3];
+                        case 3: return [2 /*return*/];
+                    }
+                });
+            }); });
+        };
+        this.deleteService = function (id, res) {
+            return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+                var deleteService, err_4;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 2, , 3]);
+                            return [4 /*yield*/, service_model_1.default.findByIdAndDelete(id)];
+                        case 1:
+                            deleteService = _a.sent();
+                            if (!deleteService) {
+                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("Cannot delete the service, something went wrong"), res);
+                                return [2 /*return*/];
+                            }
+                            resolve(deleteService);
+                            return [3 /*break*/, 3];
+                        case 2:
+                            err_4 = _a.sent();
+                            apiError_core_1.ApiError.handle(err_4, res);
+                            return [3 /*break*/, 3];
+                        case 3: return [2 /*return*/];
+                    }
+                });
+            }); });
+        };
     }
-    return UsersDB;
+    return ServicesDB;
 }());
-exports.UsersDB = UsersDB;
+exports.ServicesDB = ServicesDB;

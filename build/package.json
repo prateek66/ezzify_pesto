@@ -1,12 +1,14 @@
 {
-  "name": "@common/ezzify_common",
-  "version": "1.0.8",
-  "main": "server.js",
+  "name": "@ezzify/common",
+  "version": "1.0.17",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc && cp package.json build/ && cp package-lock.json build/",
     "start": "npm run build && node build/server.js",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' --timeout 10000",
+    "docker": "npm run build && rimraf ./types && cat ./tsconfig.json && json -I -f tsconfig.json -e \"this.compilerOptions.outDir = \"types\"\" && json -I -f tsconfig.json -e \"this.compilerOptions.emitDeclarationOnly = true\" && npm run build",
     "npm_pub": "npm version patch && npm publish --access public",
     "pub": "npm run build && git add . && git commit -m \"Updates\" && git push -u origin dev && npm version patch && npm publish --access public"
   },

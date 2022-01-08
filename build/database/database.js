@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
-var config_1 = require("./../config");
-var MONGO_CONNECTION_STRING = config_1.config.MONGO_CONNECTION_STRING, MONGO_PASSWORD = config_1.config.MONGO_PASSWORD;
+var config_1 = __importDefault(require("../config/config"));
+var MONGO_CONNECTION_STRING = config_1.default.MONGO_CONNECTION_STRING, MONGO_PASSWORD = config_1.default.MONGO_PASSWORD;
 // @ts-ignore
 var db = MONGO_CONNECTION_STRING === null || MONGO_CONNECTION_STRING === void 0 ? void 0 : MONGO_CONNECTION_STRING.replace("<PASSWORD>", MONGO_PASSWORD);
 // Connecting to the database

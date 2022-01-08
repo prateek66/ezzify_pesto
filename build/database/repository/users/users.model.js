@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,17 +58,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = __importDefault(require("mongoose"));
-var config_1 = require("../../../config");
+var mongoose_1 = __importStar(require("mongoose"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken")); // should be remove and move to common package
 var genrate_otp_1 = require("../../../helper/genrate_otp");
-var ENCRYPTION_KEY = config_1.config.ENCRYPTION_KEY;
+var config_1 = __importDefault(require("../../../config/config"));
+var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
+var Service = new mongoose_1.default.Schema({
+    serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services" },
+    basePrice: { type: Number, default: 0 }
+});
 var UserSchema = new mongoose_1.default.Schema({
     firstName: { type: String, default: " " },
     lastName: { type: String, default: " " },
     mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
     profileImage: { type: String, default: " " },
+    adharCardImage: { type: String, default: " " },
+    panCardImage: { type: String, default: " " },
     email: { type: String, default: "" },
     otpVerify: { type: String, trim: true, default: " " },
     isEmaiVerified: { type: Boolean, default: false },
@@ -58,6 +83,8 @@ var UserSchema = new mongoose_1.default.Schema({
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },
     amount: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
+    isApproved: { type: Boolean, default: false },
+    services: [Service],
     availabaleDate: { type: String, default: " " },
     availableTime: { type: String, default: " " },
     tokens: [

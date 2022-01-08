@@ -2,6 +2,7 @@
 import express from "express";
 import { ApiError, BadRequestError } from "../../../core/apiError.core";
 
+
 import User from "./users.model";
 
 export class UsersDB {
@@ -44,7 +45,7 @@ export class UsersDB {
     return new Promise(async (resolve, reject) => {
       try {
         let updatedObject = { ...data, profileImage: data.profileImage };
-        const updateUser = await User.findByIdAndUpdate(id, updatedObject, { new: true });
+        const updateUser = await User.findByIdAndUpdate(id, {$set:{updatedObject}}, { new: true });
 
         if (!updateUser) {
           ApiError.handle(new BadRequestError("User not found"), res);

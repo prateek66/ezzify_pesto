@@ -6,48 +6,82 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUsersDto = void 0;
+exports.UpdateVendorDto = void 0;
 var class_validator_1 = require("class-validator");
-var UpdateUsersDto = /** @class */ (function () {
-    function UpdateUsersDto() {
+var UpdateVendorDto = /** @class */ (function () {
+    function UpdateVendorDto() {
     }
     __decorate([
         (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "firstName", void 0);
+    ], UpdateVendorDto.prototype, "firstName", void 0);
     __decorate([
         (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "lastName", void 0);
+    ], UpdateVendorDto.prototype, "lastName", void 0);
     __decorate([
         (0, class_validator_1.IsNumber)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "mobileNumber", void 0);
+    ], UpdateVendorDto.prototype, "mobileNumber", void 0);
     __decorate([
         (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "profileImage", void 0);
+    ], UpdateVendorDto.prototype, "profileImage", void 0);
     __decorate([
         (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "city", void 0);
+    ], UpdateVendorDto.prototype, "city", void 0);
     __decorate([
         (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "state", void 0);
+    ], UpdateVendorDto.prototype, "state", void 0);
     __decorate([
         (0, class_validator_1.IsBoolean)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "isActive", void 0);
+    ], UpdateVendorDto.prototype, "isActive", void 0);
     __decorate([
         (0, class_validator_1.IsBoolean)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "isEmaiVerified", void 0);
+    ], UpdateVendorDto.prototype, "isEmaiVerified", void 0);
     __decorate([
         (0, class_validator_1.IsIn)(["user", "vendor"]),
         (0, class_validator_1.IsString)(),
         (0, class_validator_1.IsOptional)()
-    ], UpdateUsersDto.prototype, "roles", void 0);
-    return UpdateUsersDto;
+    ], UpdateVendorDto.prototype, "roles", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateVendorDto.prototype, "adharCardImage", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateVendorDto.prototype, "panCardImage", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateVendorDto.prototype, "availabaleDate", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], UpdateVendorDto.prototype, "availableTime", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)(),
+        (0, class_validator_1.ValidateNested)()
+    ], UpdateVendorDto.prototype, "services", void 0);
+    return UpdateVendorDto;
 }());
-exports.UpdateUsersDto = UpdateUsersDto;
+exports.UpdateVendorDto = UpdateVendorDto;
+var serviceDTO = /** @class */ (function () {
+    function serviceDTO() {
+    }
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsNotEmpty)()
+    ], serviceDTO.prototype, "serviceID", void 0);
+    __decorate([
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsOptional)()
+    ], serviceDTO.prototype, "basePrice", void 0);
+    return serviceDTO;
+}());

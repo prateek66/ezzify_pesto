@@ -1,5 +1,6 @@
 export declare class UpdateUsersDto {
     firstName: string;
+    address: string;
     lastName: string;
     mobileNumber: string;
     profileImage: string;

@@ -7,6 +7,10 @@ export class UpdateUsersDto {
 
   @IsString()
   @IsOptional()
+  address!: string;
+
+  @IsString()
+  @IsOptional()
   lastName!: string;
 
   @IsNumber()

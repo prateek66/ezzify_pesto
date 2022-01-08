@@ -1,4 +1,4 @@
-export declare class UpdateVendorDto {
+export declare const UpdateVendorProps: {
     firstName: string;
     lastName: string;
     mobileNumber: string;
@@ -12,10 +12,5 @@ export declare class UpdateVendorDto {
     panCardImage: string;
     availabaleDate: string;
     availableTime: string;
-    services: serviceDTO[];
-}
-declare class serviceDTO {
-    serviceID: string;
-    basePrice: number;
-}
-export {};
+    services: string;
+};

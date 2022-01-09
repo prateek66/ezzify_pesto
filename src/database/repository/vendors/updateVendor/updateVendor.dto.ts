@@ -56,7 +56,7 @@ export class UpdateVendorDto {
 
   @IsString()
   @IsOptional()
-      @ValidateNested()
+  @ValidateNested()
   services!: serviceDTO[];
 }
 

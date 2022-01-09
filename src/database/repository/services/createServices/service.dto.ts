@@ -5,13 +5,13 @@ export class ServiceDto {
   @IsNotEmpty()
    name!: string;
     
+  
   @IsString()
   @IsNotEmpty()
   @MaxLength(250)
   @MinLength(15)
   description!: string;
 
- @IsString()
   @IsNotEmpty()
   image!: string;
     

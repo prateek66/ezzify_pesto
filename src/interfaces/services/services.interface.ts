@@ -1,5 +1,6 @@
 export interface ServicesInterface {
-    name: string,
-    description: string, 
-    image: string
+  id: string;
+  name: string;
+  description: string;
+  image: string;
 }

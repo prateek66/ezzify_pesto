@@ -64,8 +64,8 @@ var VendorDB = /** @class */ (function () {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
                             updatedData = __assign(__assign({}, data), { profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage });
-                            console.log(updatedData);
-                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, { $push: { updatedData: updatedData } }, { new: true })];
+                            console.log(data.services);
+                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, updatedData, { new: true })];
                         case 1:
                             updateVendor = _a.sent();
                             if (!updateVendor) {

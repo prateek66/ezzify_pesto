@@ -10,15 +10,19 @@ export class VendorDB {
     public updateVendor = (id:string, data: any, res: express.Response) => {
         return new Promise(async (resolve, reject) => {
             try {
-               // let updatedData = { ...data, profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage };
+                let Data = { ...data, profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage };
+                //console.log(data);
                 
                 const updatedData = await data.services.forEach(async (service: any) => {
 
                     const updateVendor = await User.findByIdAndUpdate(
                         id,
                         {
+                            Data,
                             $push: { services: { serviceID: service.serviceID, basePrice: service.basePrice } },
+                        
                         },
+                
                         { new: true }
                     );
 

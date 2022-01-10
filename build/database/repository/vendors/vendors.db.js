@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -47,17 +58,19 @@ var VendorDB = /** @class */ (function () {
         var _this = this;
         this.updateVendor = function (id, data, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var updatedData, err_1;
+                var Data_1, updatedData, err_1;
                 var _this = this;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
+                            Data_1 = __assign(__assign({}, data), { profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage });
                             return [4 /*yield*/, data.services.forEach(function (service) { return __awaiter(_this, void 0, void 0, function () {
                                     var updateVendor;
                                     return __generator(this, function (_a) {
                                         switch (_a.label) {
                                             case 0: return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, {
+                                                    Data: Data_1,
                                                     $push: { services: { serviceID: service.serviceID, basePrice: service.basePrice } },
                                                 }, { new: true })];
                                             case 1:

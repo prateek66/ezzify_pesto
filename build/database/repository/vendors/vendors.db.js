@@ -58,35 +58,16 @@ var VendorDB = /** @class */ (function () {
         var _this = this;
         this.updateVendor = function (id, data, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var Data_1, updatedData, err_1;
-                var _this = this;
+                var Data, user, err_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            Data_1 = __assign(__assign({}, data), { profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage });
-                            return [4 /*yield*/, data.services.forEach(function (service) { return __awaiter(_this, void 0, void 0, function () {
-                                    var updateVendor;
-                                    return __generator(this, function (_a) {
-                                        switch (_a.label) {
-                                            case 0: return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, {
-                                                    Data: Data_1,
-                                                    $push: { services: { serviceID: service.serviceID, basePrice: service.basePrice } },
-                                                }, { new: true })];
-                                            case 1:
-                                                updateVendor = _a.sent();
-                                                return [2 /*return*/];
-                                        }
-                                    });
-                                }); })];
+                            Data = __assign(__assign({}, data), { profileImage: data.profileImage, adharCardImage: data.adharCardImage, panCardImage: data.panCardImage });
+                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, Data, { new: true })];
                         case 1:
-                            updatedData = _a.sent();
-                            console.log(updatedData);
-                            if (!updatedData) {
-                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("failed to update the vendor details"), res);
-                                return [2 /*return*/];
-                            }
-                            resolve(updatedData);
+                            user = _a.sent();
+                            resolve(user);
                             return [3 /*break*/, 3];
                         case 2:
                             err_1 = _a.sent();

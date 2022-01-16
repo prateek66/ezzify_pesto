@@ -6,8 +6,8 @@ import { BookingInterface } from "../../../interfaces/bookings/booking.interface
 const { ENCRYPTION_KEY } = config;
 
 const booking = new mongoose.Schema({
-  serviceID: { type: Schema.Types.ObjectId, ref: "Services", autopopulate: true },
-  vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true},
+  serviceID: { type: Schema.Types.ObjectId, ref: "Services"},
+  vendorID: { type: Schema.Types.ObjectId, ref: "User"},
 });
 
 const BookingsSchema = new mongoose.Schema(
@@ -22,7 +22,7 @@ const BookingsSchema = new mongoose.Schema(
   }
 );
 
-BookingsSchema.plugin(require("mongoose-autopopulate"));
+// BookingsSchema.plugin(require("mongoose-autopopulate"));
 
 const Bookings = mongoose.model<BookingInterface>("Bookings", BookingsSchema);
 

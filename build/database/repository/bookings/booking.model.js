@@ -26,8 +26,8 @@ var mongoose_1 = __importStar(require("mongoose"));
 var config_1 = __importDefault(require("../../../config/config"));
 var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var booking = new mongoose_1.default.Schema({
-    serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services", autopopulate: true },
-    vendorID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
+    serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services" },
+    vendorID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
 });
 var BookingsSchema = new mongoose_1.default.Schema({
     userID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
@@ -37,6 +37,6 @@ var BookingsSchema = new mongoose_1.default.Schema({
 }, {
     timestamps: true,
 });
-BookingsSchema.plugin(require("mongoose-autopopulate"));
+// BookingsSchema.plugin(require("mongoose-autopopulate"));
 var Bookings = mongoose_1.default.model("Bookings", BookingsSchema);
 exports.default = Bookings;

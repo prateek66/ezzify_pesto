@@ -11,6 +11,7 @@ export interface UsersInterface {
     isEmaiVerified: boolean;
     city: string;
     state: string;
+    bookingId: Object;
     roles: string;
     amount: number;
     isActive: boolean;

@@ -34,6 +34,7 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     panCardImage: { type: String, default: null },
     email: { type: String, default: "" },
     otpVerify: { type: String, trim: true, default: " " },
+    bookingId: {type: Schema.Types.ObjectId, ref: "Bookings"},
     isEmaiVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },

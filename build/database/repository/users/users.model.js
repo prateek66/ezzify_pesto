@@ -77,6 +77,7 @@ var UserSchema = new mongoose_1.default.Schema({
     panCardImage: { type: String, default: null },
     email: { type: String, default: "" },
     otpVerify: { type: String, trim: true, default: " " },
+    bookingId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Bookings" },
     isEmaiVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },

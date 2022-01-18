@@ -1,6 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-require("dotenv").config();
+var dotenv_1 = __importDefault(require("dotenv"));
+var configFile = "../.env";
+dotenv_1.default.config({ path: configFile });
 var config = {
     MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
     MONGO_PASSWORD: "root",

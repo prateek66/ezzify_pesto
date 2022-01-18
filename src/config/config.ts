@@ -1,5 +1,6 @@
-require("dotenv").config();
-
+import dotEnv from "dotenv";
+const configFile = `../.env`;
+  dotEnv.config({ path: configFile });
 const config = {
   MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
   MONGO_PASSWORD: "root",

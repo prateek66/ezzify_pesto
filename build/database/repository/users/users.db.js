@@ -60,7 +60,7 @@ var UsersDB = /** @class */ (function () {
                 }
             });
         };
-        this.verifyOtpService = function (data, roles, res) {
+        this.verifyOtpService = function (data, res) {
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
                 var user, token, err_1;
                 return __generator(this, function (_a) {

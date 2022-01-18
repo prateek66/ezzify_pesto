@@ -22,7 +22,7 @@ export class UsersDB {
     });
   };
 
-  public verifyOtpService = (data: any, roles: string, res: express.Response) => {
+  public verifyOtpService = (data: any, res: express.Response) => {
     return new Promise(async (resolve, reject) => {
       try {
 

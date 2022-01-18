@@ -14,7 +14,7 @@ interface UserDocument extends UsersInterface, Document {
 }
 
 interface UserModel extends Model<UserDocument> {
-  findByCredentials(email: string): Promise<UserDocument>;
+  findByCredentials(email: string, role:string): Promise<UserDocument>;
   userOtpVerify(id: string, otp: string): Promise<UserDocument>;
 }
 
@@ -91,12 +91,12 @@ UserSchema.methods.generateAuthToken = async function () {
  * @param email email of the user
  * @returns user object with otpVerify property
  */
-UserSchema.statics.findByCredentials = async (email: string) => {
+UserSchema.statics.findByCredentials = async (email: string , role:string) => {
   const user = await User.findOne({ email });
   const otp = generateOtp();
 
   if (!user) {
-    const newUser = new User({ email, otpVerify: otp });
+    const newUser = new User({ email, otpVerify: otp , roles:role});
     // await sendMail(otp, email);
     await newUser.save();
     return newUser;

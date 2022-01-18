@@ -5,10 +5,10 @@ import { ApiError, BadRequestError } from "../../../core/apiError.core";
 import User from "./users.model";
 
 export class UsersDB {
-  public signupUser = (email: string, res: express.Response) => {
+  public signupUser = (email: string, role: string , res: express.Response) => {
     return new Promise((resolve, reject) => {
       try {
-        const user = User.findByCredentials(email);
+        const user = User.findByCredentials(email,role);
 
         if (!user) {
           ApiError.handle(new BadRequestError("User with this email not found"), res);

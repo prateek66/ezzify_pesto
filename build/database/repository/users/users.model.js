@@ -135,7 +135,7 @@ UserSchema.methods.generateAuthToken = function () {
  * @param email email of the user
  * @returns user object with otpVerify property
  */
-UserSchema.statics.findByCredentials = function (email) { return __awaiter(void 0, void 0, void 0, function () {
+UserSchema.statics.findByCredentials = function (email, role) { return __awaiter(void 0, void 0, void 0, function () {
     var user, otp, newUser;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -144,7 +144,7 @@ UserSchema.statics.findByCredentials = function (email) { return __awaiter(void 
                 user = _a.sent();
                 otp = (0, genrate_otp_1.generateOtp)();
                 if (!!user) return [3 /*break*/, 3];
-                newUser = new User({ email: email, otpVerify: otp });
+                newUser = new User({ email: email, otpVerify: otp, roles: role });
                 // await sendMail(otp, email);
                 return [4 /*yield*/, newUser.save()];
             case 2:

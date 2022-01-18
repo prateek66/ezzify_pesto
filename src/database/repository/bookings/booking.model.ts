@@ -5,17 +5,19 @@ import { BookingInterface } from "../../../interfaces/bookings/booking.interface
 
 const { ENCRYPTION_KEY } = config;
 
-const booking = new mongoose.Schema({
-  serviceID: { type: Schema.Types.ObjectId, ref: "Services",autopopulate:true},
-  vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate:true},
-});
+// const booking = new mongoose.Schema({
+
+// });
 
 const BookingsSchema = new mongoose.Schema(
   {
-        userID: { type: Schema.Types.ObjectId, ref: "User" },
-        total_amount: { type: Number, default: 0 },
-        bookings: [booking],
-        status: {type: String, enum: ["active", "completed"], default: "active"}
+    userID: { type: Schema.Types.ObjectId, ref: "User" },
+    total_amount: { type: Number, default: 0 },
+    // bookings: [booking],
+    serviceID: { type: Schema.Types.ObjectId, ref: "Services", autopopulate: true },
+    vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true },
+    status: { type: String, enum: ["active", "completed"], default: "active" },
+    payment : {type: Boolean, default: false},
   },
   {
     timestamps: true,

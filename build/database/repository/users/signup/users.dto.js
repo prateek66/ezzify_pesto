@@ -16,6 +16,11 @@ var UsersDto = /** @class */ (function () {
         (0, class_validator_1.IsNotEmpty)(),
         (0, class_validator_1.IsEmail)()
     ], UsersDto.prototype, "email", void 0);
+    __decorate([
+        (0, class_validator_1.IsIn)(["user", "vendor"]),
+        (0, class_validator_1.IsString)(),
+        (0, class_validator_1.IsNotEmpty)()
+    ], UsersDto.prototype, "role", void 0);
     return UsersDto;
 }());
 exports.UsersDto = UsersDto;

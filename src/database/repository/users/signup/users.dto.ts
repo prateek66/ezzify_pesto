@@ -1,4 +1,4 @@
-import { IsEmail, IsIn, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail, IsIn, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class UsersDto {
   @IsString()
@@ -6,5 +6,8 @@ export class UsersDto {
   @IsEmail()
   email!: string;
 
- 
+  @IsIn(["user", "vendor"])
+  @IsString()
+  @IsNotEmpty()
+  role!: string;
 }

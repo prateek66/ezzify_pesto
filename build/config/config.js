@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("dotenv").config();
 var config = {
-    MONGO_CONNECTION_STRING: "mongodb+srv://admin:<PASSWORD>@cluster0.jgaoo.mongodb.net/Ezzify_Zindagi?retryWrites=true&w=majority",
+    MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
     MONGO_PASSWORD: "root",
     ENCRYPTION_KEY: "EZZIFY-PESTO",
     ENVIRONMENT: "DEV",

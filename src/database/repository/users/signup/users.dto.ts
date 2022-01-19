@@ -8,6 +8,6 @@ export class UsersDto {
 
   @IsIn(["user", "vendor"])
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   role!: string;
 }

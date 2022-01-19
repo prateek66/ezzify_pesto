@@ -19,7 +19,7 @@ var UsersDto = /** @class */ (function () {
     __decorate([
         (0, class_validator_1.IsIn)(["user", "vendor"]),
         (0, class_validator_1.IsString)(),
-        (0, class_validator_1.IsNotEmpty)()
+        (0, class_validator_1.IsOptional)()
     ], UsersDto.prototype, "role", void 0);
     return UsersDto;
 }());

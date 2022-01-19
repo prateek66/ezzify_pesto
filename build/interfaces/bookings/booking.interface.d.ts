@@ -7,4 +7,5 @@ export interface BookingInterface {
     }[];
     payment: boolean;
     status: string;
+    payment_id: string;
 }

@@ -4,4 +4,5 @@ export interface BookingInterface {
    bookings: { serviceID: string; vendorID: string }[];
   payment: boolean;
   status: string;
+  payment_id: string;
 }

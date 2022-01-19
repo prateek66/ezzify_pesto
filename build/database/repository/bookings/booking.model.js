@@ -34,7 +34,8 @@ var BookingsSchema = new mongoose_1.default.Schema({
     total_amount: { type: Number, default: 0 },
     bookings: [booking],
     status: { type: String, enum: ["active", "completed"], default: "active" },
-    payment: { type: Boolean, default: false },
+    payment: { type: Boolean, default: true },
+    payment_id: { type: String, default: "" }
 }, {
     timestamps: true,
 });

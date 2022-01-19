@@ -1,8 +1,6 @@
-import dotEnv from "dotenv";
-const configFile = `../.env`;
-  dotEnv.config({ path: configFile });
+
 const config = {
-  MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
+  MONGO_CONNECTION_STRING: "mongodb+srv://admin:<PASSWORD>@cluster0.jgaoo.mongodb.net/Ezzify_Zindagi?retryWrites=true&w=majority",
   MONGO_PASSWORD: "root",
   ENCRYPTION_KEY: "EZZIFY-PESTO",
   ENVIRONMENT: "DEV",

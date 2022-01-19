@@ -1,5 +1,5 @@
 declare const config: {
-    MONGO_CONNECTION_STRING: string | undefined;
+    MONGO_CONNECTION_STRING: string;
     MONGO_PASSWORD: string;
     ENCRYPTION_KEY: string;
     ENVIRONMENT: string;

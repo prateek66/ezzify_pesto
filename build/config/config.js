@@ -1,13 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var dotenv_1 = __importDefault(require("dotenv"));
-var configFile = "../.env";
-dotenv_1.default.config({ path: configFile });
 var config = {
-    MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
+    MONGO_CONNECTION_STRING: "mongodb+srv://admin:<PASSWORD>@cluster0.jgaoo.mongodb.net/Ezzify_Zindagi?retryWrites=true&w=majority",
     MONGO_PASSWORD: "root",
     ENCRYPTION_KEY: "EZZIFY-PESTO",
     ENVIRONMENT: "DEV",

@@ -8,6 +8,7 @@ const { ENCRYPTION_KEY } = config;
 const booking = new mongoose.Schema({
   serviceID: { type: Schema.Types.ObjectId, ref: "Services", autopopulate: true },
   vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true },
+  baseprice: { type: Number, default: 0}
 
 });
 
@@ -24,6 +25,15 @@ const BookingsSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+booking.methods.toJSON = function () {
+  const book = this;
+  const bookingObject = book.toObject();
+
+  delete bookingObject.baseprice;
+
+  return bookingObject;
+};
 
 BookingsSchema.plugin(require("mongoose-autopopulate"));
 

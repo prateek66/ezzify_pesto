@@ -28,6 +28,7 @@ var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var booking = new mongoose_1.default.Schema({
     serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services", autopopulate: true },
     vendorID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
+    baseprice: { type: Number, default: 0 }
 });
 var BookingsSchema = new mongoose_1.default.Schema({
     userID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
@@ -39,6 +40,12 @@ var BookingsSchema = new mongoose_1.default.Schema({
 }, {
     timestamps: true,
 });
+booking.methods.toJSON = function () {
+    var book = this;
+    var bookingObject = book.toObject();
+    delete bookingObject.baseprice;
+    return bookingObject;
+};
 BookingsSchema.plugin(require("mongoose-autopopulate"));
 var Bookings = mongoose_1.default.model("Bookings", BookingsSchema);
 exports.default = Bookings;

@@ -40,12 +40,6 @@ var BookingsSchema = new mongoose_1.default.Schema({
 }, {
     timestamps: true,
 });
-booking.methods.toJSON = function () {
-    var book = this;
-    var bookingObject = book.toObject();
-    delete bookingObject.baseprice;
-    return bookingObject;
-};
 BookingsSchema.plugin(require("mongoose-autopopulate"));
 var Bookings = mongoose_1.default.model("Bookings", BookingsSchema);
 exports.default = Bookings;

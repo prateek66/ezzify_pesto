@@ -26,14 +26,6 @@ const BookingsSchema = new mongoose.Schema(
   }
 );
 
-booking.methods.toJSON = function () {
-  const book = this;
-  const bookingObject = book.toObject();
-
-  delete bookingObject.baseprice;
-
-  return bookingObject;
-};
 
 BookingsSchema.plugin(require("mongoose-autopopulate"));
 

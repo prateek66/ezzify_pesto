@@ -8,7 +8,8 @@ const { ENCRYPTION_KEY } = config;
 const booking = new mongoose.Schema({
   serviceID: { type: Schema.Types.ObjectId, ref: "Services", autopopulate: true },
   vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true },
-  baseprice: { type: Number, default: 0}
+  baseprice: { type: Number, default: 0},
+  status: { type: String, enum: ["active", "completed"], default: "active" },
 
 });
 
@@ -17,7 +18,6 @@ const BookingsSchema = new mongoose.Schema(
     userID: { type: Schema.Types.ObjectId, ref: "User" },
     total_amount: { type: Number, default: 0 },
     bookings: [booking],
-    status: { type: String, enum: ["active", "completed"], default: "active" },
     payment : {type: Boolean, default: true},
     payment_id: { type: String, default: ""}
   },

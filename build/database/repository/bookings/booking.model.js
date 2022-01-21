@@ -28,13 +28,13 @@ var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var booking = new mongoose_1.default.Schema({
     serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services", autopopulate: true },
     vendorID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
-    baseprice: { type: Number, default: 0 }
+    baseprice: { type: Number, default: 0 },
+    status: { type: String, enum: ["active", "completed"], default: "active" },
 });
 var BookingsSchema = new mongoose_1.default.Schema({
     userID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
     total_amount: { type: Number, default: 0 },
     bookings: [booking],
-    status: { type: String, enum: ["active", "completed"], default: "active" },
     payment: { type: Boolean, default: true },
     payment_id: { type: String, default: "" }
 }, {

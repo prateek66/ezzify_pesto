@@ -75,7 +75,7 @@ var UserSchema = new mongoose_1.default.Schema({
     profileImage: { type: String, default: "https://ezzifypesto.s3.ap-south-1.amazonaws.com/user.png" },
     adharCardImage: { type: String, default: null },
     panCardImage: { type: String, default: null },
-    email: { type: String, default: "" },
+    email: { type: String, default: "", unique: true },
     otpVerify: { type: String, trim: true, default: " " },
     bookingId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Bookings" },
     isEmaiVerified: { type: Boolean, default: false },

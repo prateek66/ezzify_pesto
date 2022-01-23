@@ -31,7 +31,6 @@ var PaymentlogsSchema = new mongoose_1.default.Schema({
     baseprice: { type: Number, default: 0 },
     payment_flag: { type: Boolean, default: false },
     userID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
-    bookingApproval: { type: Boolean, default: false },
 }, {
     timestamps: true,
 });

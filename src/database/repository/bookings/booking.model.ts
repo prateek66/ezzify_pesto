@@ -9,7 +9,7 @@ const booking = new mongoose.Schema({
   serviceID: { type: Schema.Types.ObjectId, ref: "Services", autopopulate: true },
   vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true },
   baseprice: { type: Number, default: 0},
-  status: { type: String, enum: ["active", "completed"], default: "active" },
+  status: { type: String, enum: ["active", "completed", "got_it"], default: "active" },
 
 });
 

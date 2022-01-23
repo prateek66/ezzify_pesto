@@ -11,9 +11,7 @@ const PaymentlogsSchema = new mongoose.Schema(
         vendorID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true },
         baseprice: {type: Number, default: 0},
         payment_flag: {type: Boolean, default: false},
-        userID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true},
-        bookingApproval: {type: Boolean, default: false},
-    
+        userID: { type: Schema.Types.ObjectId, ref: "User", autopopulate: true},    
     },
   {
     timestamps: true,

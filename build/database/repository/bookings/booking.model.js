@@ -29,7 +29,7 @@ var booking = new mongoose_1.default.Schema({
     serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services", autopopulate: true },
     vendorID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
     baseprice: { type: Number, default: 0 },
-    status: { type: String, enum: ["active", "completed", "got_it"], default: "active" },
+    status: { type: String, enum: ["active", "completed", "recieved"], default: "active" },
 });
 var BookingsSchema = new mongoose_1.default.Schema({
     userID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },

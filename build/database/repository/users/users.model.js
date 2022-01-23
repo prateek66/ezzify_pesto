@@ -84,7 +84,7 @@ var UserSchema = new mongoose_1.default.Schema({
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },
     amount: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
-    isApproved: { type: Boolean, default: false },
+    isApproved: { type: String, enum: ["approved", "rejected", "pending"], default: "pending" },
     services: [Service],
     availabaleDate: { type: String, default: null },
     availableTime: { type: String, default: null },

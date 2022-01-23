@@ -31,7 +31,7 @@ var PaymentlogsSchema = new mongoose_1.default.Schema({
     baseprice: { type: Number, default: 0 },
     payment_flag: { type: Boolean, default: false },
     userID: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
-    status: { type: String, enum: ["active", "completed", "got_it"], default: "active" },
+    status: { type: String, enum: ["active", "completed", "recieved"], default: "active" },
 }, {
     timestamps: true,
 });

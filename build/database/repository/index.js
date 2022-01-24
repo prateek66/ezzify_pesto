@@ -15,3 +15,4 @@ __exportStar(require("./services"), exports);
 __exportStar(require("./bookings"), exports);
 __exportStar(require("./paymentLogs"), exports);
 __exportStar(require("./ratings"), exports);
+__exportStar(require("./notification"), exports);

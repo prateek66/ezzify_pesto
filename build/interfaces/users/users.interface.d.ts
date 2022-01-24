@@ -21,7 +21,7 @@ export interface UsersInterface {
         basePrice: number;
     }[];
     availableTime: string | null;
-    isApproved: string;
+    isApproved: boolean;
     tokens?: {
         token: string;
         deviceToken: string;

@@ -18,6 +18,6 @@ export interface UsersInterface {
   availabaleDate: string | null;
   services: { serviceID: string; basePrice: number }[];
   availableTime: string | null;
-  isApproved: string;
+  isApproved: boolean;
   tokens?: { token: string; deviceToken: string }[];
 }

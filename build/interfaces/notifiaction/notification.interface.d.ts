@@ -3,4 +3,5 @@ export interface NotificationInterface {
     from: string;
     data: any[];
     read: boolean;
+    type: string;
 }

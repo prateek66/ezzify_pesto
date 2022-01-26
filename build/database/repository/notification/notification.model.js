@@ -29,7 +29,8 @@ var NotificationSchema = new mongoose_1.default.Schema({
     to: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
     from: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", autopopulate: true },
     data: [],
-    read: { type: Boolean, default: false }
+    read: { type: Boolean, default: false },
+    type: { type: String, default: " " }
 }, {
     timestamps: true,
 });

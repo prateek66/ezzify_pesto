@@ -12,7 +12,8 @@ const NotificationSchema = new mongoose.Schema(
     to : {type: Schema.Types.ObjectId, ref: "User", autopopulate: true},
     from : {type: Schema.Types.ObjectId, ref: "User", autopopulate: true},
     data: [],
-    read: {type: Boolean, default: false}
+    read: {type: Boolean, default: false},
+    type: {type:String, default: " "}
 
   },
   {

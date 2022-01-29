@@ -72,11 +72,12 @@ var UserSchema = new mongoose_1.default.Schema({
     lastName: { type: String, default: " " },
     mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
-    profileImage: { type: String, default: " " },
-    adharCardImage: { type: String, default: " " },
-    panCardImage: { type: String, default: " " },
-    email: { type: String, default: "" },
+    profileImage: { type: String, default: "https://ezzifypesto.s3.ap-south-1.amazonaws.com/user.png" },
+    adharCardImage: { type: String, default: null },
+    panCardImage: { type: String, default: null },
+    email: { type: String, default: "", unique: true },
     otpVerify: { type: String, trim: true, default: " " },
+    bookingId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Bookings" },
     isEmaiVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },
@@ -85,8 +86,8 @@ var UserSchema = new mongoose_1.default.Schema({
     isActive: { type: Boolean, default: false },
     isApproved: { type: Boolean, default: false },
     services: [Service],
-    availabaleDate: { type: String, default: " " },
-    availableTime: { type: String, default: " " },
+    availabaleDate: { type: String, default: null },
+    availableTime: { type: String, default: null },
     tokens: [
         {
             token: {
@@ -134,7 +135,7 @@ UserSchema.methods.generateAuthToken = function () {
  * @param email email of the user
  * @returns user object with otpVerify property
  */
-UserSchema.statics.findByCredentials = function (email) { return __awaiter(void 0, void 0, void 0, function () {
+UserSchema.statics.findByCredentials = function (email, role) { return __awaiter(void 0, void 0, void 0, function () {
     var user, otp, newUser;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -143,7 +144,7 @@ UserSchema.statics.findByCredentials = function (email) { return __awaiter(void 
                 user = _a.sent();
                 otp = (0, genrate_otp_1.generateOtp)();
                 if (!!user) return [3 /*break*/, 3];
-                newUser = new User({ email: email, otpVerify: otp });
+                newUser = new User({ email: email, otpVerify: otp, roles: role });
                 // await sendMail(otp, email);
                 return [4 /*yield*/, newUser.save()];
             case 2:

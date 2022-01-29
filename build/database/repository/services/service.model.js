@@ -7,9 +7,9 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var config_1 = __importDefault(require("../../../config/config"));
 var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var ServicesSchema = new mongoose_1.default.Schema({
-    name: { type: String, default: " ", required: true, unique: true },
-    description: { type: String, default: " ", required: true },
-    image: { type: String, default: " ", required: true },
+    name: { type: String, default: " ", unique: true },
+    description: { type: String, default: " " },
+    image: { type: String, default: " " },
 }, {
     timestamps: true,
 });

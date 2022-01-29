@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -56,10 +45,10 @@ var users_model_1 = __importDefault(require("./users.model"));
 var UsersDB = /** @class */ (function () {
     function UsersDB() {
         var _this = this;
-        this.signupUser = function (email, res) {
+        this.signupUser = function (email, role, res) {
             return new Promise(function (resolve, reject) {
                 try {
-                    var user = users_model_1.default.findByCredentials(email);
+                    var user = users_model_1.default.findByCredentials(email, role);
                     if (!user) {
                         apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User with this email not found"), res);
                         return;
@@ -95,32 +84,6 @@ var UsersDB = /** @class */ (function () {
                             apiError_core_1.ApiError.handle(err_1, res);
                             return [3 /*break*/, 4];
                         case 4: return [2 /*return*/];
-                    }
-                });
-            }); });
-        };
-        this.updateUserService = function (data, id, res) {
-            return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                var updatedObject, updateUser, err_2;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            _a.trys.push([0, 2, , 3]);
-                            updatedObject = __assign(__assign({}, data), { profileImage: data.profileImage });
-                            return [4 /*yield*/, users_model_1.default.findByIdAndUpdate(id, { $set: { updatedObject: updatedObject } }, { new: true })];
-                        case 1:
-                            updateUser = _a.sent();
-                            if (!updateUser) {
-                                apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User not found"), res);
-                                return [2 /*return*/];
-                            }
-                            resolve(updateUser);
-                            return [3 /*break*/, 3];
-                        case 2:
-                            err_2 = _a.sent();
-                            apiError_core_1.ApiError.handle(err_2, res);
-                            return [3 /*break*/, 3];
-                        case 3: return [2 /*return*/];
                     }
                 });
             }); });

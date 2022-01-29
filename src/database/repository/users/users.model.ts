@@ -14,7 +14,7 @@ interface UserDocument extends UsersInterface, Document {
 }
 
 interface UserModel extends Model<UserDocument> {
-  findByCredentials(email: string): Promise<UserDocument>;
+  findByCredentials(email: string, role:string): Promise<UserDocument>;
   userOtpVerify(id: string, otp: string): Promise<UserDocument>;
 }
 
@@ -29,11 +29,12 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     lastName: { type: String, default: " " },
     mobileNumber: { type: Number, default: 0 },
     address: { type: String, default: " " },
-    profileImage: { type: String, default: " " },
-    adharCardImage: { type: String, default: " " },
-    panCardImage: { type: String, default: " " },
-    email: { type: String, default: "" },
+    profileImage: { type: String, default: "https://ezzifypesto.s3.ap-south-1.amazonaws.com/user.png" },
+    adharCardImage: { type: String, default: null },
+    panCardImage: { type: String, default: null },
+    email: { type: String, default: "", unique: true },
     otpVerify: { type: String, trim: true, default: " " },
+    bookingId: {type: Schema.Types.ObjectId, ref: "Bookings"},
     isEmaiVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },
@@ -42,8 +43,8 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     isActive: { type: Boolean, default: false },
     isApproved: { type: Boolean, default: false },
     services: [Service],
-    availabaleDate: { type: String, default: " " },
-    availableTime: { type: String, default: " " },
+    availabaleDate: { type: String, default: null },
+    availableTime: { type: String, default: null},
     tokens: [
       {
         token: {
@@ -90,12 +91,12 @@ UserSchema.methods.generateAuthToken = async function () {
  * @param email email of the user
  * @returns user object with otpVerify property
  */
-UserSchema.statics.findByCredentials = async (email: string) => {
+UserSchema.statics.findByCredentials = async (email: string , role:string) => {
   const user = await User.findOne({ email });
   const otp = generateOtp();
 
   if (!user) {
-    const newUser = new User({ email, otpVerify: otp });
+    const newUser = new User({ email, otpVerify: otp , roles:role});
     // await sendMail(otp, email);
     await newUser.save();
     return newUser;

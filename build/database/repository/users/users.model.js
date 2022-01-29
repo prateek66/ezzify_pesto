@@ -78,7 +78,7 @@ var UserSchema = new mongoose_1.default.Schema({
     email: { type: String, default: "", unique: true },
     otpVerify: { type: String, trim: true, default: " " },
     bookingId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Bookings" },
-    isEmaiVerified: { type: Boolean, default: false },
+    isEmailVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },

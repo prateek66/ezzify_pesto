@@ -8,7 +8,7 @@ export interface UsersInterface {
     panCardImage: string | null;
     email: string;
     otpVerify: string;
-    isEmaiVerified: boolean;
+    isEmailVerified: boolean;
     city: string;
     state: string;
     bookingId: Object;

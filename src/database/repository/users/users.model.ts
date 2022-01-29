@@ -35,7 +35,7 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     email: { type: String, default: "", unique: true },
     otpVerify: { type: String, trim: true, default: " " },
     bookingId: { type: Schema.Types.ObjectId, ref: "Bookings" },
-    isEmaiVerified: { type: Boolean, default: false },
+    isEmailVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },

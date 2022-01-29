@@ -14,13 +14,13 @@ interface UserDocument extends UsersInterface, Document {
 }
 
 interface UserModel extends Model<UserDocument> {
-  findByCredentials(email: string, role:string): Promise<UserDocument>;
+  findByCredentials(email: string, role: string): Promise<UserDocument>;
   userOtpVerify(id: string, otp: string): Promise<UserDocument>;
 }
 
 const Service = new mongoose.Schema({
   serviceID: { type: Schema.Types.ObjectId, ref: "Services" },
-  basePrice: { type: Number, default: 0 }
+  basePrice: { type: Number, default: 0 },
 });
 
 const UserSchema: Schema<UserDocument> = new mongoose.Schema(
@@ -34,17 +34,17 @@ const UserSchema: Schema<UserDocument> = new mongoose.Schema(
     panCardImage: { type: String, default: null },
     email: { type: String, default: "", unique: true },
     otpVerify: { type: String, trim: true, default: " " },
-    bookingId: {type: Schema.Types.ObjectId, ref: "Bookings"},
+    bookingId: { type: Schema.Types.ObjectId, ref: "Bookings" },
     isEmaiVerified: { type: Boolean, default: false },
     city: { type: String, default: " " },
     state: { type: String, default: " " },
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },
     amount: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
-    isApproved: { type: Boolean, default: false },
+    isApproved: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
     services: [Service],
     availabaleDate: { type: String, default: null },
-    availableTime: { type: String, default: null},
+    availableTime: { type: String, default: null },
     tokens: [
       {
         token: {
@@ -91,12 +91,12 @@ UserSchema.methods.generateAuthToken = async function () {
  * @param email email of the user
  * @returns user object with otpVerify property
  */
-UserSchema.statics.findByCredentials = async (email: string , role:string) => {
+UserSchema.statics.findByCredentials = async (email: string, role: string) => {
   const user = await User.findOne({ email });
   const otp = generateOtp();
 
   if (!user) {
-    const newUser = new User({ email, otpVerify: otp , roles:role});
+    const newUser = new User({ email, otpVerify: otp, roles: role });
     // await sendMail(otp, email);
     await newUser.save();
     return newUser;

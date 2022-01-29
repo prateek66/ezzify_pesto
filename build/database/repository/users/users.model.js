@@ -65,7 +65,7 @@ var config_1 = __importDefault(require("../../../config/config"));
 var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var Service = new mongoose_1.default.Schema({
     serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services" },
-    basePrice: { type: Number, default: 0 }
+    basePrice: { type: Number, default: 0 },
 });
 var UserSchema = new mongoose_1.default.Schema({
     firstName: { type: String, default: " " },
@@ -84,7 +84,7 @@ var UserSchema = new mongoose_1.default.Schema({
     roles: { type: String, enum: ["admin", "user", "vendor"], default: "user" },
     amount: { type: Number, default: 0 },
     isActive: { type: Boolean, default: false },
-    isApproved: { type: Boolean, default: false },
+    isApproved: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
     services: [Service],
     availabaleDate: { type: String, default: null },
     availableTime: { type: String, default: null },

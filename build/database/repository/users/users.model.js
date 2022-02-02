@@ -155,10 +155,11 @@ UserSchema.statics.findByCredentials = function (email, role, SENDGRID_API_KEY, 
                 return [2 /*return*/, newUser];
             case 4:
                 user.otpVerify = otp;
-                // await sendMail(otp, email);
-                return [4 /*yield*/, user.save()];
+                return [4 /*yield*/, (0, sendgrid_1.sendMail)(otp, email, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL)];
             case 5:
-                // await sendMail(otp, email);
+                _a.sent();
+                return [4 /*yield*/, user.save()];
+            case 6:
                 _a.sent();
                 return [2 /*return*/, user];
         }

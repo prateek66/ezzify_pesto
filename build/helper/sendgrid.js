@@ -61,6 +61,7 @@ var sendMail = function (otp, email, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL) { 
                 return [4 /*yield*/, mail_1.default.send(message)];
             case 1:
                 sendmail = _a.sent();
+                console.log(sendmail);
                 if (sendmail) {
                     return [2 /*return*/, sendmail];
                 }

@@ -17,6 +17,7 @@ export const sendMail = async (otp: string, email: string, SENDGRID_API_KEY: str
   };
 
   const sendmail = await sgmail.send(message);
+  console.log(sendmail);
   if (sendmail) {
     return sendmail;
   } else return new Error("something went wrong!!");

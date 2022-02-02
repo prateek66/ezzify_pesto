@@ -103,7 +103,7 @@ UserSchema.statics.findByCredentials = async (email: string, role: string, SENDG
   }
 
   user.otpVerify = otp;
-  // await sendMail(otp, email);
+  await sendMail(otp, email, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL);
   await user.save();
   return user;
 };

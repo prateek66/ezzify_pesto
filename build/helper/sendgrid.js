@@ -42,18 +42,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendMail = void 0;
 var mail_1 = __importDefault(require("@sendgrid/mail"));
-var config_1 = require("../config");
-var sendMail = function (otp, email) { return __awaiter(void 0, void 0, void 0, function () {
+var sendMail = function (otp, email, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL) { return __awaiter(void 0, void 0, void 0, function () {
     var message, sendmail;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                mail_1.default.setApiKey(config_1.config.SENDGRID_API_KEY);
+                mail_1.default.setApiKey(SENDGRID_API_KEY);
                 message = {
                     to: email,
                     from: {
                         name: "Ezzify",
-                        email: config_1.config.SENDGRID_SENDER_EMAIL,
+                        email: SENDGRID_SENDER_EMAIL,
                     },
                     subject: "Verify OTP",
                     text: "This is your OTP please verify yourself",

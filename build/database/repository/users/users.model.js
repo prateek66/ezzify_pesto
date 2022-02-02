@@ -60,6 +60,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importStar(require("mongoose"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken")); // should be remove and move to common package
+var sendgrid_1 = require("../../../helper/sendgrid"); // move to common package
 var genrate_otp_1 = require("../../../helper/genrate_otp");
 var config_1 = __importDefault(require("../../../config/config"));
 var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
@@ -135,7 +136,7 @@ UserSchema.methods.generateAuthToken = function () {
  * @param email email of the user
  * @returns user object with otpVerify property
  */
-UserSchema.statics.findByCredentials = function (email, role) { return __awaiter(void 0, void 0, void 0, function () {
+UserSchema.statics.findByCredentials = function (email, role, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL) { return __awaiter(void 0, void 0, void 0, function () {
     var user, otp, newUser;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -143,19 +144,20 @@ UserSchema.statics.findByCredentials = function (email, role) { return __awaiter
             case 1:
                 user = _a.sent();
                 otp = (0, genrate_otp_1.generateOtp)();
-                if (!!user) return [3 /*break*/, 3];
+                if (!!user) return [3 /*break*/, 4];
                 newUser = new User({ email: email, otpVerify: otp, roles: role });
-                // await sendMail(otp, email);
-                return [4 /*yield*/, newUser.save()];
+                return [4 /*yield*/, (0, sendgrid_1.sendMail)(otp, email, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL)];
             case 2:
-                // await sendMail(otp, email);
+                _a.sent();
+                return [4 /*yield*/, newUser.save()];
+            case 3:
                 _a.sent();
                 return [2 /*return*/, newUser];
-            case 3:
+            case 4:
                 user.otpVerify = otp;
                 // await sendMail(otp, email);
                 return [4 /*yield*/, user.save()];
-            case 4:
+            case 5:
                 // await sendMail(otp, email);
                 _a.sent();
                 return [2 /*return*/, user];

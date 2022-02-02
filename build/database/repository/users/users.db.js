@@ -45,10 +45,10 @@ var users_model_1 = __importDefault(require("./users.model"));
 var UsersDB = /** @class */ (function () {
     function UsersDB() {
         var _this = this;
-        this.signupUser = function (email, role, res) {
+        this.signupUser = function (email, role, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL, res) {
             return new Promise(function (resolve, reject) {
                 try {
-                    var user = users_model_1.default.findByCredentials(email, role);
+                    var user = users_model_1.default.findByCredentials(email, role, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL);
                     if (!user) {
                         apiError_core_1.ApiError.handle(new apiError_core_1.BadRequestError("User with this email not found"), res);
                         return;

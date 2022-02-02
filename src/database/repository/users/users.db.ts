@@ -4,7 +4,7 @@ import { ApiError, BadRequestError } from "../../../core/apiError.core";
 import User from "./users.model";
 
 export class UsersDB {
-  public signupUser = (email: string, role: string, SENDGRID_API_KEY: string, SENDGRID_SENDER_EMAIL: string, res: express.Response) => {
+  public signupUser = (email: string, role: string, SENDGRID_API_KEY: any, SENDGRID_SENDER_EMAIL: any, res: express.Response) => {
     return new Promise((resolve, reject) => {
       try {
         const user = User.findByCredentials(email, role, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL);

@@ -5,7 +5,7 @@ interface UserDocument extends UsersInterface, Document {
     generateAuthToken(): Promise<string>;
 }
 interface UserModel extends Model<UserDocument> {
-    findByCredentials(email: string, role: string, SENDGRID_API_KEY: string, SENDGRID_SENDER_EMAIL: string): Promise<UserDocument>;
+    findByCredentials(email: string, role: string, SENDGRID_API_KEY: any, SENDGRID_SENDER_EMAIL: any): Promise<UserDocument>;
     userOtpVerify(id: string, otp: string): Promise<UserDocument>;
 }
 declare const User: UserModel;

@@ -3,6 +3,7 @@
 import sgmail from "@sendgrid/mail";
 
 export const sendMail = async (otp: string, email: string, SENDGRID_API_KEY: string, SENDGRID_SENDER_EMAIL: string) => {
+  console.log("from package", SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL);
   sgmail.setApiKey(SENDGRID_API_KEY);
 
   const message = {

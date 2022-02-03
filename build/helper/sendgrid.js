@@ -47,6 +47,7 @@ var sendMail = function (otp, email, SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL) { 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                console.log("from package", SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL);
                 mail_1.default.setApiKey(SENDGRID_API_KEY);
                 message = {
                     to: email,

@@ -45,6 +45,8 @@ abstract class ApiResponse {
     delete clone.status;
     for (const i in clone) if (typeof clone[i] === "undefined") delete clone[i];
 
+    // @ts-ignore
+    console.log(clone["data"]);
     if (
       ENVIRONMENT === "PROD" &&
       // @ts-ignore

@@ -63,6 +63,8 @@ var ApiResponse = /** @class */ (function () {
         for (var i in clone)
             if (typeof clone[i] === "undefined")
                 delete clone[i];
+        // @ts-ignore
+        console.log(clone["data"]);
         if (ENVIRONMENT === "PROD" &&
             // @ts-ignore
             clone["data"] &&

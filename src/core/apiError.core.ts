@@ -35,6 +35,7 @@ export abstract class ApiError extends Error {
   }
 
   public static handle(err: ApiError, res: Response): Response {
+    console.log("API Error", err);
     switch (err.type) {
       case ErrorType.BAD_TOKEN:
       case ErrorType.TOKEN_EXPIRED:

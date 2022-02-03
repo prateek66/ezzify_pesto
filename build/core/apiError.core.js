@@ -44,6 +44,7 @@ var ApiError = /** @class */ (function (_super) {
         return _this;
     }
     ApiError.handle = function (err, res) {
+        console.log("API Error", err);
         switch (err.type) {
             case ErrorType.BAD_TOKEN:
             case ErrorType.TOKEN_EXPIRED:

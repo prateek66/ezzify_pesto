@@ -51,12 +51,10 @@ abstract class ApiResponse {
       ENVIRONMENT === "PROD" &&
       // @ts-ignore
       clone["data"] &&
-      // @ts-ignore
-      !clone["data"]["token"] &&
       url !== "/security/encryption" &&
       url !== "/security/decryption"
     ) {
-      console.log('first');
+      console.log("first");
       // @ts-ignore
       clone["data"] = Security.encryption(clone["data"]);
     }

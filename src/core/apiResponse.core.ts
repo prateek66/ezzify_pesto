@@ -56,6 +56,7 @@ abstract class ApiResponse {
       url !== "/security/encryption" &&
       url !== "/security/decryption"
     ) {
+      console.log('first');
       // @ts-ignore
       clone["data"] = Security.encryption(clone["data"]);
     }

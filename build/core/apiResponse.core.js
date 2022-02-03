@@ -72,6 +72,7 @@ var ApiResponse = /** @class */ (function () {
             !clone["data"]["token"] &&
             url !== "/security/encryption" &&
             url !== "/security/decryption") {
+            console.log('first');
             // @ts-ignore
             clone["data"] = security_core_1.default.encryption(clone["data"]);
         }

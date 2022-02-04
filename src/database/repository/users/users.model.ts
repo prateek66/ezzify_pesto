@@ -19,7 +19,7 @@ interface UserModel extends Model<UserDocument> {
 }
 
 const Service = new mongoose.Schema({
-  serviceID: { type: Schema.Types.ObjectId, ref: "Services", autopopulate: true },
+  serviceID: { type: Schema.Types.ObjectId, ref: "Services" },
   basePrice: { type: Number, default: 0 },
 });
 
@@ -124,7 +124,7 @@ UserSchema.statics.userOtpVerify = async (id: string, otp: string) => {
   return user;
 };
 
-UserSchema.plugin(require("mongoose-autopopulate"));
+// UserSchema.plugin(require("mongoose-autopopulate"));
 
 const User = mongoose.model<UserDocument, UserModel>("User", UserSchema);
 

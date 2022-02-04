@@ -65,7 +65,7 @@ var genrate_otp_1 = require("../../../helper/genrate_otp");
 var config_1 = __importDefault(require("../../../config/config"));
 var ENCRYPTION_KEY = config_1.default.ENCRYPTION_KEY;
 var Service = new mongoose_1.default.Schema({
-    serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services", autopopulate: true },
+    serviceID: { type: mongoose_1.Schema.Types.ObjectId, ref: "Services" },
     basePrice: { type: Number, default: 0 },
 });
 var UserSchema = new mongoose_1.default.Schema({
@@ -189,6 +189,6 @@ UserSchema.statics.userOtpVerify = function (id, otp) { return __awaiter(void 0,
         }
     });
 }); };
-UserSchema.plugin(require("mongoose-autopopulate"));
+// UserSchema.plugin(require("mongoose-autopopulate"));
 var User = mongoose_1.default.model("User", UserSchema);
 exports.default = User;

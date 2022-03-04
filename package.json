@@ -9,7 +9,7 @@
     "start": "npm run build && node build/server.js",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' --timeout 10000",
     "npm_pub": "npm version patch && npm publish --access public",
-    "pub": "npm run build && git add . && git commit -m \"Updates\" && git push -u origin dev && npm version patch && npm publish --access public"
+    "pub": "npm run build && git add . && git commit -m \"Updates\" && git push -u origin deploy && npm version patch && npm publish --access public"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.6.0",
